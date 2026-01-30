@@ -45,7 +45,7 @@ body {
     padding: 0 24px;
 }
 
-/* --- Navigation (Glassmorphism) --- */
+/* --- Navigation --- */
 .navbar {
     padding: 16px 0;
     position: sticky;
@@ -55,6 +55,7 @@ body {
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     z-index: 1000;
     border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+    transition: var(--transition);
 }
 
 .nav-flex {
@@ -98,52 +99,72 @@ nav a:hover { color: var(--primary); }
     letter-spacing: -2px;
 }
 
-/* --- Pricing Cards (Menyentuh Animation) --- */
+.highlight {
+    background: linear-gradient(120deg, rgba(102, 126, 234, 0.15) 0%, rgba(102, 126, 234, 0.15) 100%);
+    color: var(--primary);
+}
+
+.badge {
+    background: var(--accent);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* --- Section Helpers --- */
+.section-padding { padding: 100px 0; }
+.bg-light { background-color: var(--bg-light); }
+.section-header { text-align: center; margin-bottom: 60px; }
+
+/* --- Interactive Cards (The Hover/Menyentuh Logic) --- */
 .order-form-card, .p-card {
     background: var(--white);
     padding: 32px;
     border-radius: 20px;
-    /* Reserve 3px so it doesn't "jump" when border color changes */
+    /* 3px placeholder border so cards don't jitter when touched */
     border: 3px solid transparent; 
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     box-shadow: var(--shadow-sm);
 }
 
-/* 1. Make the Middle (Standard) card blue by default */
-.order-form-card:nth-child(2), .order-form-card.popular {
+/* Middle Card (Standard) default state */
+.order-form-card.popular {
     border-color: var(--primary);
 }
 
-/* 2. Hover (Menyentuh) Effect for ALL cards */
+/* Hover effect for ALL cards (Basic, Standard, Pro) */
 .order-form-card:hover {
     transform: translateY(-12px);
-    /* Basic & Pro will now turn blue just like the middle one! */
-    border-color: var(--primary); 
+    border-color: var(--primary); /* Now Basic & Pro turn blue on touch! */
     box-shadow: var(--shadow-lg);
 }
 
-/* Special glow for the popular one when touched */
-.order-form-card:nth-child(2):hover, .order-form-card.popular:hover {
-    box-shadow: 0 20px 30px -10px rgba(102, 126, 234, 0.4);
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    white-space: nowrap;
 }
 
-/* --- Form Elements --- */
-input, select, textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    font-size: 1rem;
-    background: var(--white);
-    transition: var(--transition);
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-}
+/* --- Pricing Specifics --- */
+.price { font-size: 3.5rem; font-weight: 800; margin: 20px 0; }
+.plan-name { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+.primary-text { color: var(--primary); }
+.features { list-style: none; margin-bottom: 30px; }
+.features li { margin-bottom: 12px; }
 
 /* --- Buttons --- */
 .btn {
@@ -159,44 +180,29 @@ input:focus {
     text-align: center;
 }
 
-.btn-primary { 
-    background: var(--primary); 
-    color: white; 
-    box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
+.btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4); }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+.btn-outline { border: 2px solid var(--border); background: transparent; color: var(--text-main); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+.btn-full { width: 100%; }
+
+/* --- Grid Layouts --- */
+.order-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
 }
 
-.btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-.btn-outline { 
-    border: 2px solid var(--border); 
-    background: transparent; 
-    color: var(--text-main); 
-}
-
-.btn-outline:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-/* --- Responsive --- */
 @media (min-width: 992px) {
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
-    .order-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .order-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
 }
 
-@media (max-width: 768px) {
-    .nav-flex { flex-direction: column; gap: 16px; }
-    nav a { margin: 0 12px; }
-    .hero { text-align: center; }
-}
+/* --- Footer --- */
+.footer { padding: 80px 0 40px; background: #0f172a; color: white; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.logo-white { color: white !important; }
 
-/* --- Animations --- */
-.reveal-init { opacity: 0; transform: translateY(20px); }
-.revealed {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+@media (min-width: 768px) {
+    .footer-grid { grid-template-columns: 2fr 1fr; }
 }
