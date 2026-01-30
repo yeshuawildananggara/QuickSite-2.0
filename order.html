@@ -3,159 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Start Your Project | QuickSite</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+  <title>Start Project | QuickSite</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body class="bg-light">
 
-<body>
-
-<!-- NAVBAR (SAME AS INDEX) -->
 <header class="navbar">
   <div class="container nav-flex">
     <a href="index.html" class="logo">Quick<span>Site</span></a>
-    <nav class="nav-links">
-      <a href="index.html#how">How It Works</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="index.html#contact" class="btn nav-btn">Get Started</a>
-    </nav>
   </div>
 </header>
 
-<main>
+<section class="section">
+  <div class="container order-layout">
 
-  <!-- PAGE HEADER -->
-  <section class="section section-alt">
-    <div class="container section-header">
-      <span class="hero-badge">Step-by-step onboarding</span>
-      <h2>Start your 48-hour sprint</h2>
-      <p>Answer a few questions so we can build the right site for you.</p>
-    </div>
+    <form id="orderForm" class="card">
+      <h2>Project details</h2>
 
-    <div class="container order-container">
+      <label>Business name</label>
+      <input id="business" required />
 
-      <!-- FORM CARD -->
-      <div class="order-card">
+      <label>Plan</label>
+      <select id="plan" required>
+        <option value="basic">Basic – $49</option>
+        <option value="standard">Standard – $99</option>
+        <option value="premium">Premium – $149</option>
+      </select>
 
-        <!-- STEP INDICATOR -->
-        <div class="step-indicator">
-          <div class="step active" id="indicator1">1 <span>Contact</span></div>
-          <div class="step" id="indicator2">2 <span>Project</span></div>
-          <div class="step" id="indicator3">3 <span>Done</span></div>
-        </div>
+      <button class="btn primary full">Continue to checkout</button>
+    </form>
 
-        <form id="orderForm">
+    <aside class="card muted">
+      <h4>What happens next?</h4>
+      <p>You’ll complete payment and we’ll start your 48-hour build immediately.</p>
+    </aside>
 
-          <!-- STEP 1 -->
-          <div class="form-section" id="step1">
-            <h3>Contact information</h3>
-            <p class="muted">How should we reach you?</p>
-
-            <div class="input-group">
-              <label for="name">Full name *</label>
-              <input type="text" id="name" placeholder="John Doe" required>
-              <small class="error-text"></small>
-            </div>
-
-            <div class="input-group">
-              <label for="email">Email address *</label>
-              <input type="email" id="email" placeholder="john@example.com" required>
-              <small class="error-text"></small>
-            </div>
-
-            <div class="input-group">
-              <label for="phone">Phone number</label>
-              <input type="tel" id="phone" placeholder="+1 555 000 0000">
-            </div>
-
-            <button type="button" class="btn primary full" onclick="nextStep(2)">
-              Continue →
-            </button>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="form-section" id="step2" style="display:none;">
-            <h3>Project details</h3>
-            <p class="muted">Help us understand what you need.</p>
-
-            <div class="input-group">
-              <label for="businessName">Business name *</label>
-              <input type="text" id="businessName" required>
-              <small class="error-text"></small>
-            </div>
-
-            <div class="input-group">
-              <label for="plan">Choose a plan *</label>
-              <select id="plan" required>
-                <option value="" disabled selected>Select a plan</option>
-                <option value="29">Basic — $29</option>
-                <option value="49">Standard — $49</option>
-                <option value="79">Premium — $79</option>
-              </select>
-            </div>
-
-            <div class="input-group">
-              <label for="desc">Describe your business *</label>
-              <textarea id="desc" rows="4" required></textarea>
-            </div>
-
-            <div class="form-actions">
-              <button type="button" class="btn secondary" onclick="nextStep(1)">Back</button>
-              <button type="submit" class="btn primary">Secure my slot</button>
-            </div>
-          </div>
-
-        </form>
-
-        <!-- SUCCESS -->
-        <div id="successMessage" class="success-message" style="display:none;">
-          <div class="success-icon">🎉</div>
-          <h3>Request received</h3>
-          <p>We’ll contact you within 24 hours.</p>
-          <a href="index.html" class="btn secondary">Back to home</a>
-        </div>
-
-      </div>
-
-      <!-- SIDEBAR -->
-      <aside class="order-sidebar">
-
-        <div class="trust-card">
-          <h4>🔒 Secure & private</h4>
-          <p>Your data goes directly to our team. No third parties.</p>
-        </div>
-
-        <div class="trust-card">
-          <h4>⏱ 48-hour guarantee</h4>
-          <p>First draft delivered within 48 hours or it’s free.</p>
-        </div>
-
-        <div class="trust-card">
-          <p class="quote">
-            “Fastest website launch I’ve ever had.”
-          </p>
-          <span class="quote-author">— Sarah J.</span>
-        </div>
-
-      </aside>
-
-    </div>
-  </section>
-
-</main>
-
-<!-- FOOTER (SAME SYSTEM) -->
-<footer class="footer">
-  <div class="container footer-flex">
-    <p>© 2026 QuickSite</p>
-    <a href="index.html" class="footer-link">Home</a>
   </div>
-</footer>
+</section>
 
-<script src="script.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+if (plan) document.getElementById("plan").value = plan;
+
+document.getElementById("orderForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const business = document.getElementById("business").value;
+  const selectedPlan = document.getElementById("plan").value;
+  window.location.href = `checkout.html?plan=${selectedPlan}&business=${encodeURIComponent(business)}`;
+});
+</script>
+
 </body>
 </html>
