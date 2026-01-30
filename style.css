@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root {
-    /* Color Palette */
     --primary: #667eea;
     --primary-light: #8094ee;
     --primary-dark: #4c66d6;
@@ -13,24 +12,21 @@
     --white: #ffffff;
     --border: #e2e8f0;
     
-    /* Shadows & Elevation */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     
-    /* Animation */
     --transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Crucial for preventing card jitter */
+    box-sizing: border-box; 
 }
 
 html {
     scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -39,7 +35,7 @@ body {
     color: var(--text-main);
     background-color: var(--white);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; /* Prevent horizontal scroll on mobile animations */
+    overflow-x: hidden;
 }
 
 /* --- 2. Layout Utility Classes --- */
@@ -53,7 +49,7 @@ body {
 .bg-light { background-color: var(--bg-light); }
 .section-header { text-align: center; margin-bottom: 60px; }
 
-/* --- 3. Navigation (Glassmorphism) --- */
+/* --- 3. Navigation --- */
 .navbar {
     padding: 16px 0;
     position: sticky;
@@ -105,11 +101,7 @@ nav a:hover { color: var(--primary); }
     letter-spacing: -2px;
 }
 
-.highlight {
-    color: var(--primary);
-    position: relative;
-    display: inline-block;
-}
+.highlight { color: var(--primary); }
 
 .hero-subtitle {
     font-size: 1.15rem;
@@ -129,7 +121,7 @@ nav a:hover { color: var(--primary); }
     display: inline-block;
 }
 
-/* Hero Visual Fixes */
+/* Browser Mockup Visual */
 .browser-mockup {
     background: white;
     border-radius: 12px;
@@ -154,7 +146,7 @@ nav a:hover { color: var(--primary); }
 .skeleton-line.long { width: 80%; }
 .skeleton-line.medium { width: 50%; }
 
-/* --- 5. Interactive Cards (The "Menyentuh" Fix) --- */
+/* --- 5. Interactive Cards & Grids --- */
 .order-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -165,7 +157,6 @@ nav a:hover { color: var(--primary); }
     background: var(--white);
     padding: 40px 32px;
     border-radius: 24px;
-    /* Reservation border to prevent jumping */
     border: 3px solid transparent; 
     transition: var(--transition);
     position: relative;
@@ -179,7 +170,6 @@ nav a:hover { color: var(--primary); }
     transform: scale(1.03);
 }
 
-/* Hover/Touch Effect */
 .order-form-card:hover {
     transform: translateY(-15px) scale(1.03);
     border-color: var(--primary-light);
@@ -200,13 +190,24 @@ nav a:hover { color: var(--primary); }
     font-weight: 800;
 }
 
-/* --- 6. Pricing Specifics --- */
+/* --- 6. Pricing, Reviews & FAQ --- */
 .price { font-size: 3.5rem; font-weight: 800; margin: 15px 0; display: flex; align-items: baseline; }
 .price::before { content: '$'; font-size: 1.5rem; margin-right: 4px; }
 .plan-name { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-.primary-text { color: var(--primary); }
 .features { list-style: none; margin-bottom: 30px; flex-grow: 1; }
 .features li { margin-bottom: 14px; font-size: 0.95rem; color: var(--text-muted); }
+
+/* Reviews */
+.stars { color: #FFD700; margin-bottom: 15px; }
+.testimonial-text { font-style: italic; margin-bottom: 20px; flex-grow: 1; }
+.client-info { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border); padding-top: 15px; }
+.avatar { width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 15px; max-width: 800px; margin: 0 auto; }
+details { background: white; border: 1px solid var(--border); border-radius: 12px; }
+summary { padding: 20px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
+.faq-content { padding: 0 20px 20px; color: var(--text-muted); }
 
 /* --- 7. Buttons --- */
 .btn {
@@ -221,58 +222,27 @@ nav a:hover { color: var(--primary); }
     text-align: center;
 }
 
-.btn-primary { 
-    background: var(--primary); 
-    color: white; 
-    box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4); 
-}
-
-.btn-primary:hover { 
-    background: var(--primary-dark); 
-    transform: translateY(-2px); 
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-}
-
-.btn-outline { 
-    border: 2px solid var(--border); 
-    background: transparent; 
-    color: var(--text-main); 
-}
-
-.btn-outline:hover { 
-    border-color: var(--primary); 
-    color: var(--primary); 
-}
-
+.btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4); }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+.btn-outline { border: 2px solid var(--border); background: transparent; color: var(--text-main); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
 .btn-full { width: 100%; margin-top: auto; }
 
-/* --- 8. Responsive Design --- */
+/* --- 8. Responsive --- */
 @media (min-width: 992px) {
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
     .order-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
 }
 
 @media (max-width: 768px) {
-    .section-padding { padding: 60px 0; }
-    .hero { text-align: center; padding-top: 60px; }
-    .hero-subtitle { margin: 0 auto 35px; }
-    .cta-group { justify-content: center; }
-    .nav-links { display: none; } /* Consider adding a mobile menu toggle later */
+    .hero { text-align: center; }
+    .nav-links { display: none; }
 }
 
 /* --- 9. Footer --- */
 .footer { padding: 80px 0 40px; background: #0f172a; color: white; }
 .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
 .logo-white { color: white !important; }
-.copyright { 
-    margin-top: 50px; 
-    padding-top: 30px; 
-    border-top: 1px solid rgba(255,255,255,0.1); 
-    text-align: center; 
-    font-size: 0.85rem; 
-    opacity: 0.6; 
-}
+.copyright { margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.85rem; opacity: 0.6; }
 
-@media (min-width: 768px) {
-    .footer-grid { grid-template-columns: 2fr 1fr; }
-}
+@media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr; } }
