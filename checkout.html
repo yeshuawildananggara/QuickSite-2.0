@@ -1,159 +1,343 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Checkout | QuickSite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-light">
+/* =========================
+   QuickSite — Unified Design System
+   Matches: index.html, order.html, checkout.html
+   ========================= */
 
-    <header class="navbar">
-        <div class="container nav-flex">
-            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">Quick<span>Site</span></a>
-            <div class="checkout-badge">
-                <span class="lock-icon">🔒</span> Secure Checkout
-            </div>
-        </div>
-    </header>
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e5e7eb;
+  --radius: 14px;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
 
-    <section class="checkout-page">
-        <div class="container">
-            <header class="section-intro" style="text-align: left; margin-bottom: 40px;">
-                <h1>Complete Your Purchase</h1>
-                <p class="subheadline">Secure payment powered by 256-bit encryption.</p>
-            </header>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-            <div class="order-grid">
-                <div class="form-container">
-                    <form id="checkoutForm" class="order-form-card">
-                        <div class="step-title-group">
-                            <h2>Payment Method</h2>
-                            <p>Credit or Debit Card</p>
-                        </div>
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+}
 
-                        <div class="form-group">
-                            <label for="cardName">Name on Card <span class="required">*</span></label>
-                            <input type="text" id="cardName" name="cardName" placeholder="Johnathan Doe" required>
-                            <span class="error-message" id="cardNameError"></span>
-                        </div>
+.bg-light { background: var(--bg-light); }
 
-                        <div class="form-group">
-                            <label for="cardNumber">Card Number <span class="required">*</span></label>
-                            <div class="input-with-icon">
-                                <input type="text" id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
-                                <span class="card-icon">💳</span>
-                            </div>
-                            <span class="error-message" id="cardNumberError"></span>
-                        </div>
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="cardExpiry">Expiry Date <span class="required">*</span></label>
-                                <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" maxlength="5" required>
-                                <span class="error-message" id="cardExpiryError"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="cardCVC">CVC/CVV <span class="required">*</span></label>
-                                <input type="text" id="cardCVC" name="cardCVC" placeholder="123" maxlength="4" required>
-                                <span class="error-message" id="cardCVCError"></span>
-                            </div>
-                        </div>
+/* =========================
+   Navbar
+   ========================= */
 
-                        <div class="step-title-group" style="margin-top: 40px;">
-                            <h2>Billing Details</h2>
-                        </div>
+.navbar {
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+}
 
-                        <div class="form-group">
-                            <label for="billingAddress">Street Address <span class="required">*</span></label>
-                            <input type="text" id="billingAddress" name="billingAddress" placeholder="123 Web Avenue" required>
-                            <span class="error-message" id="billingAddressError"></span>
-                        </div>
+.nav-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="billingCity">City <span class="required">*</span></label>
-                                <input type="text" id="billingCity" name="billingCity" placeholder="Tech City" required>
-                                <span class="error-message" id="billingCityError"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="billingZip">ZIP / Postal Code <span class="required">*</span></label>
-                                <input type="text" id="billingZip" name="billingZip" placeholder="10101" maxlength="10" required>
-                                <span class="error-message" id="billingZipError"></span>
-                            </div>
-                        </div>
+.logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  text-decoration: none;
+}
 
-                        <div class="checkout-actions">
-                            <button type="submit" class="btn btn-primary btn-full" style="font-size: 1.1rem;">
-                                Pay & Launch My Project
-                            </button>
-                            <a href="order.html" class="btn btn-outline btn-full" style="text-align: center;">← Back to Project Info</a>
-                        </div>
-                    </form>
+.logo span { color: var(--primary); }
 
-                    <div id="checkoutSuccess" class="success-message" style="display: none;">
-                        <div class="success-icon">🚀</div>
-                        <h3>Success! We're on it.</h3>
-                        <p>Your payment was successful. We've started your 48-hour build clock. Look for a welcome email in the next 15 minutes.</p>
-                        <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">Return Home</a>
-                    </div>
-                </div>
+.nav-links a {
+  margin-left: 28px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-muted);
+}
 
-                <aside class="order-sidebar">
-                    <div class="sticky-sidebar">
-                        <div class="summary-card">
-                            <h4 style="margin-bottom: 20px; font-size: 1.2rem;">Order Summary</h4>
-                            
-                            <div class="summary-item">
-                                <span class="summary-label">Selected Plan</span>
-                                <span class="summary-value" id="summaryPlan">Standard Plan</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-label">Business Name</span>
-                                <span class="summary-value" id="summaryBusiness">Your Agency</span>
-                            </div>
-                            
-                            <hr style="border: none; border-top: 1px solid var(--border); margin: 15px 0;">
-                            
-                            <div class="summary-item">
-                                <span class="summary-label">Subtotal</span>
-                                <span class="summary-value" id="summarySubtotal">$99.00</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-label">Tax (0%)</span>
-                                <span class="summary-value">$0.00</span>
-                            </div>
-                            
-                            <div class="summary-item total" style="margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--primary);">
-                                <span class="summary-label" style="font-weight: 800; color: var(--text-main);">Total</span>
-                                <span class="summary-value" id="summaryTotal" style="font-size: 1.5rem; color: var(--primary);">$99.00</span>
-                            </div>
-                        </div>
+.nav-links a:hover { color: var(--primary); }
 
-                        <div class="trust-badge-container">
-                            <div class="trust-badge">
-                                🛡️ <span>Money-back guarantee if 48hr window missed.</span>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </section>
+.checkout-badge {
+  font-weight: 600;
+  color: var(--primary);
+}
 
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <div class="logo">Quick<span>Site</span></div>
-                <p>Modern sites in record time.</p>
-            </div>
-            <div class="footer-contact">
-                <p>&copy; 2026 QuickSite Secure Payments</p>
-            </div>
-        </div>
-    </footer>
+/* =========================
+   Sections & Headings
+   ========================= */
 
-    <script src="script.js"></script>
-</body>
-</html>
+.section-padding {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.section-subtitle,
+.subheadline {
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-full { width: 100%; }
+
+/* =========================
+   Forms (Order + Checkout)
+   ========================= */
+
+.order-container,
+.order-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+}
+
+@media (max-width: 900px) {
+  .order-container,
+  .order-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.order-card,
+.order-form-card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 40px;
+}
+
+.form-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.input-group,
+.form-group {
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+textarea { resize: vertical; min-height: 120px; }
+
+.error-text,
+.error-message {
+  font-size: 0.75rem;
+  color: #dc2626;
+  margin-top: 6px;
+  display: block;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* =========================
+   Step Indicator (Order)
+   ========================= */
+
+.step-indicator {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.step {
+  flex: 1;
+  padding: 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: #eef2ff;
+  color: var(--primary);
+}
+
+.step span { margin-left: 6px; font-weight: 600; }
+
+.step.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* =========================
+   Sidebar / Trust / Summary
+   ========================= */
+
+.order-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sticky-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.trust-card,
+.summary-card,
+.testimonial-card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.summary-item.total {
+  margin-top: 16px;
+}
+
+.summary-label { color: var(--text-muted); }
+
+.summary-value { font-weight: 700; }
+
+.trust-badge {
+  font-size: 0.85rem;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #ecfeff;
+  color: #0369a1;
+  text-align: center;
+}
+
+/* =========================
+   Success States
+   ========================= */
+
+.success-message {
+  background: var(--bg-white);
+  padding: 60px 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   Footer
+   ========================= */
+
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-white);
+  padding: 40px 0;
+  margin-top: 80px;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer p { color: var(--text-muted); font-size: 0.85rem; }
+
+@media (max-width: 700px) {
+  .footer-grid { flex-direction: column; gap: 12px; text-align: center; }
+}
