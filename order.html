@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Project | QuickSite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <header class="navbar">
+        <div class="container nav-flex">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">Quick<span>Site</span></a>
+            <nav>
+                <a href="index.html#how">Process</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="order-page">
+        <div class="container">
+            <div class="order-grid">
+                
+                <div class="form-container">
+                    <header class="form-header">
+                        <h1>Start Your 48-Hour Sprint</h1>
+                        <p class="subheadline">Tell us about your vision, and we'll handle the heavy lifting.</p>
+                    </header>
+                    
+                    <div class="form-progress">
+                        <div class="progress-step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Your Info</span>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Project Details</span>
+                        </div>
+                    </div>
+                    
+                    <form id="orderForm" class="order-form-card">
+                        <div class="form-step active" id="step1">
+                            <div class="step-title-group">
+                                <h2>Contact Information</h2>
+                                <p>How should we reach out to discuss your site?</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                                <span class="error-message" id="phoneError"></span>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-primary btn-full" id="nextBtn">Continue to Details →</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-step" id="step2">
+                            <div class="step-title-group">
+                                <h2>Project Details</h2>
+                                <p>Help us understand your business goals.</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="businessName">Business Name <span class="required">*</span></label>
+                                <input type="text" id="businessName" name="businessName" placeholder="e.g. Blue Sky Consulting" required>
+                                <span class="error-message" id="businessNameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="plan">Select Your Package <span class="required">*</span></label>
+                                <div class="select-wrapper">
+                                    <select id="plan" name="plan" required>
+                                        <option value="" disabled selected>Select a plan...</option>
+                                        <option value="basic">Basic Plan - $49</option>
+                                        <option value="standard">Standard Plan - $99</option>
+                                        <option value="pro">Pro Plan - $149</option>
+                                    </select>
+                                </div>
+                                <span class="error-message" id="planError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="businessDescription">What does your business do? <span class="required">*</span></label>
+                                <textarea id="businessDescription" name="businessDescription" rows="5" required placeholder="Describe your services, target audience, and any specific text you want included..."></textarea>
+                                <span class="error-message" id="businessDescriptionError"></span>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="backBtn">← Back</button>
+                                <button type="submit" class="btn btn-primary">Secure My Slot</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        <div class="success-icon">🎉</div>
+                        <h3>Request Received!</h3>
+                        <p>Check your inbox. We've sent a confirmation email and will reach out personally within 24 hours to begin your build.</p>
+                        <a href="index.html" class="btn btn-outline" style="margin-top: 20px;">Back to Home</a>
+                    </div>
+                </div>
+
+                <aside class="order-sidebar">
+                    <div class="sticky-sidebar">
+                        <div class="summary-card">
+                            <h4>Why QuickSite?</h4>
+                            <ul class="sidebar-list">
+                                <li>
+                                    <strong>Real Human Support</strong>
+                                    <span>No bots. You'll work directly with a designer via email.</span>
+                                </li>
+                                <li>
+                                    <strong>48-Hour Guarantee</strong>
+                                    <span>If we don't deliver a draft in 48 hours, the site is on us.</span>
+                                </li>
+                                <li>
+                                    <strong>No Recurring Fees</strong>
+                                    <span>You own the site. No monthly platform locks.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="testimonial-mini">
+                            <p>"The fastest launch I've ever experienced. I was online and taking leads by Tuesday!"</p>
+                            <span>— Sarah J., Freelancer</span>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">Quick<span>Site</span></div>
+                <p>Simple websites, fast.</p>
+            </div>
+            <div class="footer-contact">
+                <p><strong>Response time:</strong> Within 24 hours</p>
+                <p><strong>Method:</strong> Email communication only</p>
+                <p class="footer-copy">&copy; 2026 QuickSite. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
