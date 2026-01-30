@@ -1,6 +1,5 @@
 /* --- Global Variables & Reset --- */
 :root {
-    /* Refined Color Palette */
     --primary: #667eea;
     --primary-light: #8094ee;
     --primary-dark: #4c66d6;
@@ -14,12 +13,10 @@
     --success: #10b981;
     --border: #e2e8f0;
     
-    /* Modern Elevation */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     
-    /* Animation Speeds */
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -58,7 +55,6 @@ body {
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     z-index: 1000;
     border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-    transition: var(--transition);
 }
 
 .nav-flex {
@@ -95,45 +91,40 @@ nav a:hover { color: var(--primary); }
     border-bottom: 1px solid var(--border);
 }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
 .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem); /* Fluid typography */
+    font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1.1;
     margin-bottom: 24px;
     letter-spacing: -2px;
 }
 
-.highlight {
-    background: linear-gradient(120deg, rgba(102, 126, 234, 0.15) 0%, rgba(102, 126, 234, 0.15) 100%);
-    color: var(--primary);
-}
-
-/* --- Interactive Cards (Menyentuh) --- */
+/* --- Pricing Cards (Menyentuh Animation) --- */
 .order-form-card, .p-card {
     background: var(--white);
     padding: 32px;
     border-radius: 20px;
-    border: 1px solid var(--border);
+    /* Reserve 3px so it doesn't "jump" when border color changes */
+    border: 3px solid transparent; 
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     box-shadow: var(--shadow-sm);
 }
 
-/* Hover Effect Triggered when pointer "touches" the card */
-.order-form-card:hover, .p-card:hover {
+/* 1. Make the Middle (Standard) card blue by default */
+.order-form-card:nth-child(2), .order-form-card.popular {
+    border-color: var(--primary);
+}
+
+/* 2. Hover (Menyentuh) Effect for ALL cards */
+.order-form-card:hover {
     transform: translateY(-12px);
-    border-color: var(--primary-light);
+    /* Basic & Pro will now turn blue just like the middle one! */
+    border-color: var(--primary); 
     box-shadow: var(--shadow-lg);
 }
 
-/* Special glow for popular plan */
-.popular:hover {
+/* Special glow for the popular one when touched */
+.order-form-card:nth-child(2):hover, .order-form-card.popular:hover {
     box-shadow: 0 20px 30px -10px rgba(102, 126, 234, 0.4);
 }
 
@@ -177,7 +168,6 @@ input:focus {
 .btn-primary:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
 .btn-outline { 
@@ -191,26 +181,20 @@ input:focus {
     color: var(--primary);
 }
 
-/* --- Responsive Layouts --- */
+/* --- Responsive --- */
 @media (min-width: 992px) {
-    .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
-    .order-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+    .order-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 }
 
 @media (max-width: 768px) {
-    .navbar { padding: 12px 0; }
     .nav-flex { flex-direction: column; gap: 16px; }
-    nav a { margin: 0 12px; font-size: 0.8rem; }
-    .hero { padding: 40px 0; text-align: center; }
-    .hero h1 { font-size: 2.25rem; }
+    nav a { margin: 0 12px; }
+    .hero { text-align: center; }
 }
 
-/* --- Animations Helper --- */
-.reveal-init {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
+/* --- Animations --- */
+.reveal-init { opacity: 0; transform: translateY(20px); }
 .revealed {
     opacity: 1;
     transform: translateY(0);
