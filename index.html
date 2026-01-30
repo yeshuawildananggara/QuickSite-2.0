@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickSite | Professional One-Page Websites in 48 Hours</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="navbar">
         <div class="container nav-flex">
-            <div class="logo">Quick<span>Site</span></div>
+            <a href="index.html" class="logo">Quick<span>Site</span></a>
             <nav>
                 <a href="#how">Process</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
-                <a href="order.html" class="btn-nav">Get Started</a>
+                <a href="order.html" class="btn btn-primary" style="padding: 8px 16px; margin-left: 15px;">Get Started</a>
             </nav>
         </div>
     </header>
@@ -24,165 +24,104 @@
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <span class="badge">Limited Slots Available This Week</span>
+                <span class="badge" style="background: var(--accent); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; display: inline-block;">
+                    Limited Slots Available This Week
+                </span>
                 <h1>Stop Losing Leads to a <span class="highlight">Missing Website.</span></h1>
-                <p class="subheadline">We build high-converting, professional one-page websites for growing businesses. Launch your online presence in just 48 hours.</p>
-                <div class="cta-group">
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px;">
+                    We build high-converting, professional one-page websites for growing businesses. Launch your online presence in just 48 hours.
+                </p>
+                <div class="cta-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="order.html" class="btn btn-primary">Start My Project</a>
-                    <a href="#examples" class="btn btn-outline">View Portfolio</a>
+                    <a href="#pricing" class="btn btn-outline">View Pricing</a>
                 </div>
-                <div class="trust-markers">
+                <div class="trust-markers" style="margin-top: 30px; display: flex; gap: 20px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">
                     <span>✓ 48-Hour Delivery</span>
                     <span>✓ Mobile Optimized</span>
-                    <span>✓ SEO Ready</span>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="image-placeholder">
-                    
+                <div style="background: var(--white); border-radius: 20px; box-shadow: var(--shadow); height: 350px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
+                    <span style="font-size: 4rem;">🚀</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="logos">
+    <section id="how" class="value-prop" style="padding: 80px 0;">
         <div class="container">
-            <p>Trusted by freelancers and small businesses worldwide</p>
-            <div class="logo-bar">
-                </div>
-        </div>
-    </section>
-
-    <section class="value-prop">
-        <div class="container">
-            <div class="section-intro">
-                <h2>The Smartest Way to Get Online</h2>
-                <p>Skip the expensive agencies and the DIY frustration.</p>
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 15px;">The Smartest Way to Get Online</h2>
+                <p style="color: var(--text-muted);">Skip the expensive agencies and the DIY frustration.</p>
             </div>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="icon">🚀</div>
+            <div class="order-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card order-form-card" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🚀</div>
                     <h3>Built for Speed</h3>
                     <p>Don't wait months. We deliver your fully-functional site in just two days.</p>
                 </div>
-                <div class="card">
-                    <div class="icon">📱</div>
+                <div class="card order-form-card" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">📱</div>
                     <h3>Mobile-First</h3>
                     <p>60% of web traffic is mobile. Your site will look stunning on every screen size.</p>
                 </div>
-                <div class="card">
-                    <div class="icon">📈</div>
+                <div class="card order-form-card" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">📈</div>
                     <h3>Conversion Focused</h3>
-                    <p>We don't just "design"—we build layouts specifically crafted to turn visitors into customers.</p>
+                    <p>We build layouts specifically crafted to turn visitors into customers.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="how" class="how-it-works bg-light">
+    <section id="pricing" class="bg-light" style="padding: 80px 0;">
         <div class="container">
-            <div class="section-header">
-                <h2>Four Steps to Launch</h2>
-                <p>Our streamlined process respects your time.</p>
-            </div>
-            <div class="steps-container">
-                <div class="step-item">
-                    <span class="number">01</span>
-                    <h4>Submit Info</h4>
-                    <p>Fill out our simple brief with your business details and goals.</p>
-                </div>
-                <div class="step-item">
-                    <span class="number">02</span>
-                    <h4>We Build</h4>
-                    <p>Our team designs a bespoke landing page tailored to your brand.</p>
-                </div>
-                <div class="step-item">
-                    <span class="number">03</span>
-                    <h4>Review</h4>
-                    <p>Check the draft and request any necessary adjustments.</p>
-                </div>
-                <div class="step-item">
-                    <span class="number">04</span>
-                    <h4>Go Live</h4>
-                    <p>We hand over the keys and your business is officially open for the world.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2>Simple, Transparent Pricing</h2>
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Simple, Transparent Pricing</h2>
                 <p>No hidden fees. No recurring monthly management costs.</p>
             </div>
-            <div class="pricing-grid">
-                <div class="p-card">
-                    <h3>Basic</h3>
-                    <div class="price">$49</div>
-                    <p>Perfect for personal brands.</p>
-                    <ul class="features">
-                        <li>One-Page Layout</li>
-                        <li>Mobile Optimized</li>
-                        <li>48-Hour Delivery</li>
-                        <li>1 Revision</li>
-                    </ul>
-                    <a href="order.html" class="btn btn-outline-full">Choose Basic</a>
+            
+            <div class="order-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="order-form-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="color: var(--text-muted);">Basic</h3>
+                        <div style="font-size: 3rem; font-weight: 800; margin: 15px 0;">$49</div>
+                        <ul style="list-style: none; margin-bottom: 30px; font-size: 0.95rem;">
+                            <li style="margin-bottom: 10px;">✓ One-Page Layout</li>
+                            <li style="margin-bottom: 10px;">✓ 48-Hour Delivery</li>
+                            <li style="margin-bottom: 10px;">✓ 1 Revision</li>
+                        </ul>
+                    </div>
+                    <a href="order.html" class="btn btn-outline btn-full">Choose Basic</a>
                 </div>
-                <div class="p-card popular">
-                    <div class="top-tag">Most Popular</div>
-                    <h3>Standard</h3>
-                    <div class="price">$99</div>
-                    <p>Ideal for local businesses.</p>
-                    <ul class="features">
-                        <li>One-Page Layout</li>
-                        <li><strong>Contact Form</strong></li>
-                        <li>Basic SEO Setup</li>
-                        <li>2 Revisions</li>
-                    </ul>
-                    <a href="order.html" class="btn btn-primary-full">Choose Standard</a>
+
+                <div class="order-form-card" style="border: 2px solid var(--primary); transform: scale(1.05); z-index: 10; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <span style="background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Most Popular</span>
+                        <h3 style="margin-top: 10px;">Standard</h3>
+                        <div style="font-size: 3rem; font-weight: 800; margin: 15px 0; color: var(--primary);">$99</div>
+                        <ul style="list-style: none; margin-bottom: 30px; font-size: 0.95rem;">
+                            <li style="margin-bottom: 10px;">✓ <strong>Contact Form</strong></li>
+                            <li style="margin-bottom: 10px;">✓ Basic SEO Setup</li>
+                            <li style="margin-bottom: 10px;">✓ 2 Revisions</li>
+                        </ul>
+                    </div>
+                    <a href="order.html" class="btn btn-primary btn-full">Choose Standard</a>
                 </div>
-                <div class="p-card">
-                    <h3>Pro</h3>
-                    <div class="price">$149</div>
-                    <p>The "All-In" package.</p>
-                    <ul class="features">
-                        <li>Custom Branding</li>
-                        <li>Priority Support</li>
-                        <li><strong>24-Hour Delivery</strong></li>
-                        <li>3 Revisions</li>
-                    </ul>
-                    <a href="order.html" class="btn btn-outline-full">Choose Pro</a>
+
+                <div class="order-form-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="color: var(--text-muted);">Pro</h3>
+                        <div style="font-size: 3rem; font-weight: 800; margin: 15px 0;">$149</div>
+                        <ul style="list-style: none; margin-bottom: 30px; font-size: 0.95rem;">
+                            <li style="margin-bottom: 10px;">✓ Custom Branding</li>
+                            <li style="margin-bottom: 10px;">✓ <strong>24-Hour Delivery</strong></li>
+                            <li style="margin-bottom: 10px;">✓ 3 Revisions</li>
+                        </ul>
+                    </div>
+                    <a href="order.html" class="btn btn-outline btn-full">Choose Pro</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="faq" class="faq">
-        <div class="container narrow">
-            <h2 class="text-center">Common Questions</h2>
-            <div class="faq-accordion">
-                <details>
-                    <summary>Do I need to buy hosting first?</summary>
-                    <p>No, we can help you set that up during the process or host it for you at a small additional cost.</p>
-                </details>
-                <details>
-                    <summary>What if I don't like the design?</summary>
-                    <p>Every plan includes revisions! We work closely with the brief you provide to ensure we hit the mark the first time.</p>
-                </details>
-                <details>
-                    <summary>Can I add more pages later?</summary>
-                    <p>Absolutely. While we focus on one-page sites for speed, you can always add pages as your business grows.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <section class="final-cta">
-        <div class="container text-center">
-            <h2>Ready to level up your business?</h2>
-            <p>Don't let another lead slip away because of a "Coming Soon" page.</p>
-            <a href="order.html" class="btn btn-primary btn-lg">Get Your Site in 48 Hours</a>
         </div>
     </section>
 
@@ -190,16 +129,18 @@
         <div class="container footer-grid">
             <div class="footer-brand">
                 <div class="logo">Quick<span>Site</span></div>
-                <p>Premium one-page sites, delivered fast.</p>
+                <p style="opacity: 0.7; margin-top: 10px;">Premium one-page sites, delivered fast.</p>
             </div>
-            <div class="footer-links">
+            <div class="footer-contact">
                 <p>© 2026 QuickSite. Independent & Proud.</p>
-                <div class="socials">
-                    <a href="#">Twitter</a> • <a href="#">LinkedIn</a>
+                <div style="margin-top: 10px;">
+                    <a href="#" style="color: white; margin-right: 15px; text-decoration: none; opacity: 0.8;">Twitter</a>
+                    <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">LinkedIn</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
