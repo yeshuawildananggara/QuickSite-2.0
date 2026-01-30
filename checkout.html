@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | QuickSite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <header class="navbar">
+        <div class="container nav-flex">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">Quick<span>Site</span></a>
+            <div class="checkout-badge">
+                <span class="lock-icon">🔒</span> Secure Checkout
+            </div>
+        </div>
+    </header>
+
+    <section class="checkout-page">
+        <div class="container">
+            <header class="section-intro" style="text-align: left; margin-bottom: 40px;">
+                <h1>Complete Your Purchase</h1>
+                <p class="subheadline">Secure payment powered by 256-bit encryption.</p>
+            </header>
+
+            <div class="order-grid">
+                <div class="form-container">
+                    <form id="checkoutForm" class="order-form-card">
+                        <div class="step-title-group">
+                            <h2>Payment Method</h2>
+                            <p>Credit or Debit Card</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cardName">Name on Card <span class="required">*</span></label>
+                            <input type="text" id="cardName" name="cardName" placeholder="Johnathan Doe" required>
+                            <span class="error-message" id="cardNameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number <span class="required">*</span></label>
+                            <div class="input-with-icon">
+                                <input type="text" id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                                <span class="card-icon">💳</span>
+                            </div>
+                            <span class="error-message" id="cardNumberError"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cardExpiry">Expiry Date <span class="required">*</span></label>
+                                <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+                                <span class="error-message" id="cardExpiryError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardCVC">CVC/CVV <span class="required">*</span></label>
+                                <input type="text" id="cardCVC" name="cardCVC" placeholder="123" maxlength="4" required>
+                                <span class="error-message" id="cardCVCError"></span>
+                            </div>
+                        </div>
+
+                        <div class="step-title-group" style="margin-top: 40px;">
+                            <h2>Billing Details</h2>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="billingAddress">Street Address <span class="required">*</span></label>
+                            <input type="text" id="billingAddress" name="billingAddress" placeholder="123 Web Avenue" required>
+                            <span class="error-message" id="billingAddressError"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="billingCity">City <span class="required">*</span></label>
+                                <input type="text" id="billingCity" name="billingCity" placeholder="Tech City" required>
+                                <span class="error-message" id="billingCityError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="billingZip">ZIP / Postal Code <span class="required">*</span></label>
+                                <input type="text" id="billingZip" name="billingZip" placeholder="10101" maxlength="10" required>
+                                <span class="error-message" id="billingZipError"></span>
+                            </div>
+                        </div>
+
+                        <div class="checkout-actions">
+                            <button type="submit" class="btn btn-primary btn-full" style="font-size: 1.1rem;">
+                                Pay & Launch My Project
+                            </button>
+                            <a href="order.html" class="btn btn-outline btn-full" style="text-align: center;">← Back to Project Info</a>
+                        </div>
+                    </form>
+
+                    <div id="checkoutSuccess" class="success-message" style="display: none;">
+                        <div class="success-icon">🚀</div>
+                        <h3>Success! We're on it.</h3>
+                        <p>Your payment was successful. We've started your 48-hour build clock. Look for a welcome email in the next 15 minutes.</p>
+                        <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">Return Home</a>
+                    </div>
+                </div>
+
+                <aside class="order-sidebar">
+                    <div class="sticky-sidebar">
+                        <div class="summary-card">
+                            <h4 style="margin-bottom: 20px; font-size: 1.2rem;">Order Summary</h4>
+                            
+                            <div class="summary-item">
+                                <span class="summary-label">Selected Plan</span>
+                                <span class="summary-value" id="summaryPlan">Standard Plan</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Business Name</span>
+                                <span class="summary-value" id="summaryBusiness">Your Agency</span>
+                            </div>
+                            
+                            <hr style="border: none; border-top: 1px solid var(--border); margin: 15px 0;">
+                            
+                            <div class="summary-item">
+                                <span class="summary-label">Subtotal</span>
+                                <span class="summary-value" id="summarySubtotal">$99.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Tax (0%)</span>
+                                <span class="summary-value">$0.00</span>
+                            </div>
+                            
+                            <div class="summary-item total" style="margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--primary);">
+                                <span class="summary-label" style="font-weight: 800; color: var(--text-main);">Total</span>
+                                <span class="summary-value" id="summaryTotal" style="font-size: 1.5rem; color: var(--primary);">$99.00</span>
+                            </div>
+                        </div>
+
+                        <div class="trust-badge-container">
+                            <div class="trust-badge">
+                                🛡️ <span>Money-back guarantee if 48hr window missed.</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">Quick<span>Site</span></div>
+                <p>Modern sites in record time.</p>
+            </div>
+            <div class="footer-contact">
+                <p>&copy; 2026 QuickSite Secure Payments</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
