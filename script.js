@@ -1,19 +1,16 @@
 /**
  * QuickSite Main JavaScript
- * Handles: Multi-step forms, Validation, Data Persistence, and UI Animations
+ * Optimized for Smooth Scrolling, Advanced Animations, and Multi-step Forms
  */
 
-// --- 1. Form Validation Helpers ---
+// --- 1. Validation & UI Helpers ---
 const validate = {
     email: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
-    
     phone: (phone) => !phone || (phone.replace(/\D/g, '').length >= 10),
-    
     cardNumber: (number) => {
         const cleaned = number.replace(/\s/g, '');
         return /^\d{13,19}$/.test(cleaned);
     },
-    
     expiry: (expiry) => {
         const re = /^(0[1-9]|1[0-2])\/\d{2}$/;
         if (!re.test(expiry)) return false;
@@ -21,33 +18,44 @@ const validate = {
         const expiryDate = new Date(2000 + parseInt(year), parseInt(month) - 1);
         return expiryDate > new Date();
     },
-    
     cvc: (cvc) => /^\d{3,4}$/.test(cvc)
 };
 
 const ui = {
     showError: (inputId, message) => {
         const input = document.getElementById(inputId);
-        const error = document.getElementById(`${inputId}Error`);
-        if (input && error) {
+        if (input) {
             input.style.borderColor = 'var(--error)';
-            error.textContent = message;
-            error.style.display = 'block';
+            input.classList.add('shake'); // Adds a subtle error shake
+            setTimeout(() => input.classList.remove('shake'), 400);
         }
     },
     clearError: (inputId) => {
         const input = document.getElementById(inputId);
-        const error = document.getElementById(`${inputId}Error`);
-        if (input && error) {
-            input.style.borderColor = 'var(--border)';
-            error.textContent = '';
-            error.style.display = 'none';
-        }
+        if (input) input.style.borderColor = 'var(--border)';
     }
 };
 
-// --- 2. Main Logic ---
+// --- 2. Smooth Scrolling Logic ---
+const initSmoothScroll = () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80, // Adjust for sticky navbar height
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+};
+
+// --- 3. Main Logic Execution ---
 document.addEventListener('DOMContentLoaded', function() {
+    initSmoothScroll();
+
     const orderForm = document.getElementById('orderForm');
     const checkoutForm = document.getElementById('checkoutForm');
 
@@ -59,54 +67,43 @@ document.addEventListener('DOMContentLoaded', function() {
         const backBtn = document.getElementById('backBtn');
         const progressSteps = document.querySelectorAll('.progress-step');
 
-        // Step 1 -> Step 2
         nextBtn.addEventListener('click', () => {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
-            let isValid = true;
+            
+            if (name.length < 2) { ui.showError('name'); return; }
+            if (!validate.email(email)) { ui.showError('email'); return; }
 
-            if (name.length < 2) { ui.showError('name', 'Please enter your name'); isValid = false; }
-            else { ui.clearError('name'); }
-
-            if (!validate.email(email)) { ui.showError('email', 'Enter a valid email'); isValid = false; }
-            else { ui.clearError('email'); }
-
-            if (isValid) {
+            step1.style.opacity = '0';
+            setTimeout(() => {
                 step1.classList.remove('active');
                 step2.classList.add('active');
                 progressSteps[1].classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            }, 300);
         });
 
-        // Back to Step 1
         backBtn.addEventListener('click', () => {
             step2.classList.remove('active');
             step1.classList.add('active');
             progressSteps[1].classList.remove('active');
         });
 
-        // Sync Business Name to Sidebar Preview
+        // Sync Sidebar Preview
         const bizInput = document.getElementById('businessName');
         const bizPreview = document.getElementById('summaryBusiness');
-        bizInput.addEventListener('input', (e) => {
+        bizInput?.addEventListener('input', (e) => {
             bizPreview.textContent = e.target.value || 'Your Agency';
         });
 
-        // Form Submit (Save data and go to checkout)
         orderForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const bizName = bizInput.value.trim();
             const plan = document.getElementById('plan').value;
-
-            if (bizName.length < 2) { ui.showError('businessName', 'Business name required'); return; }
-
             const orderData = {
-                businessName: bizName,
+                businessName: bizInput.value.trim(),
                 plan: plan,
                 price: plan === 'pro' ? 149 : plan === 'standard' ? 99 : 49
             };
-
             sessionStorage.setItem('tempOrder', JSON.stringify(orderData));
             window.location.href = 'checkout.html';
         });
@@ -114,70 +111,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- CHECKOUT PAGE LOGIC ---
     if (checkoutForm) {
-        const orderData = JSON.parse(sessionStorage.getItem('tempOrder') || '{"businessName":"N/A","plan":"standard","price":99}');
-
-        // Populate Summary
-        document.getElementById('summaryPlan').textContent = orderData.plan.toUpperCase();
-        document.getElementById('summaryBusiness').textContent = orderData.businessName;
-        document.getElementById('summarySubtotal').textContent = `$${orderData.price}.00`;
-        document.getElementById('summaryTotal').textContent = `$${orderData.price}.00`;
-
-        // Card Formatting
+        // Card Number Formatting
         const cardInput = document.getElementById('cardNumber');
-        cardInput.addEventListener('input', (e) => {
+        cardInput?.addEventListener('input', (e) => {
             let val = e.target.value.replace(/\D/g, '');
             let formatted = val.match(/.{1,4}/g)?.join(' ') || val;
             e.target.value = formatted.substring(0, 19);
         });
 
-        const expiryInput = document.getElementById('cardExpiry');
-        expiryInput.addEventListener('input', (e) => {
-            let val = e.target.value.replace(/\D/g, '');
-            if (val.length >= 2) val = val.substring(0, 2) + '/' + val.substring(2, 4);
-            e.target.value = val.substring(0, 5);
-        });
-
-        // Final Submit
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Basic validation check
-            const cardNum = cardInput.value;
-            if (!validate.cardNumber(cardNum)) {
-                ui.showError('cardNumber', 'Invalid card number');
-                return;
-            }
+            // Simulate Payment Processing
+            const btn = checkoutForm.querySelector('button');
+            btn.innerHTML = 'Processing...';
+            btn.disabled = true;
 
-            // Success Animation
-            checkoutForm.style.opacity = '0';
             setTimeout(() => {
-                checkoutForm.style.display = 'none';
-                document.querySelector('.section-intro').style.display = 'none';
-                document.querySelector('.order-sidebar').style.display = 'none';
-                
-                const successMsg = document.getElementById('checkoutSuccess');
-                successMsg.style.display = 'block';
-                successMsg.classList.add('active'); // Triggers fadeInUp
-            }, 400);
-
-            sessionStorage.clear();
+                checkoutForm.innerHTML = `
+                    <div style="text-align: center; padding: 40px; animation: fadeInUp 0.6s ease forwards;">
+                        <span style="font-size: 4rem;">🎉</span>
+                        <h2 style="margin: 20px 0;">Order Confirmed!</h2>
+                        <p style="color: var(--text-muted);">Check your email for the next steps. We're starting your project now!</p>
+                        <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">Return Home</a>
+                    </div>
+                `;
+            }, 2000);
         });
     }
 
-    // --- 3. Index Page Animations (Intersection Observer) ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
+    // --- 4. Intersection Observer for Scroll Animations ---
+    const revealOnScroll = () => {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    document.querySelectorAll('.card, .p-card, .hero-content').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s ease-out';
-        observer.observe(el);
-    });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        // Apply to cards and sections
+        document.querySelectorAll('.order-form-card, .hero-content, .hero-image, details').forEach(el => {
+            el.classList.add('reveal-init');
+            observer.observe(el);
+        });
+    };
+
+    revealOnScroll();
 });
