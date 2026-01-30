@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickSite | Premium One-Page Websites in 48 Hours</title>
     
-    <meta name="description" content="Get a high-converting, professional one-page website for your business in just 48 hours.">
+    <meta name="description" content="Get a high-converting, professional one-page website for your business in just 48 hours. Built for entrepreneurs.">
+    <meta property="og:title" content="QuickSite | Professional Sites in 48 Hours">
+    <meta property="og:description" content="Stop losing leads. Get your business online this week.">
+    <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +20,16 @@
     <header class="navbar">
         <div class="container nav-flex">
             <a href="index.html" class="logo" aria-label="QuickSite Home">Quick<span>Site</span></a>
-            <nav class="nav-links">
+            
+            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-links" id="nav-menu">
                 <a href="#how">Process</a>
+                <a href="#portfolio">Showcase</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#testimonials">Reviews</a>
                 <a href="order.html" class="btn btn-primary nav-btn">Get Started</a>
@@ -27,7 +38,7 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero reveal">
             <div class="container hero-grid">
                 <div class="hero-content">
                     <span class="badge">🚀 Limited Slots Available This Week</span>
@@ -42,6 +53,7 @@
                     <div class="trust-markers">
                         <span>✓ 48-Hour Delivery</span>
                         <span>✓ Mobile Optimized</span>
+                        <span>✓ No Hidden Fees</span>
                     </div>
                 </div>
                 
@@ -62,7 +74,7 @@
             </div>
         </section>
 
-        <section id="how" class="section-padding">
+        <section id="how" class="section-padding reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">The Smartest Way to Get Online</h2>
@@ -88,69 +100,97 @@
             </div>
         </section>
 
-        <section id="pricing" class="bg-light section-padding">
+        <section id="portfolio" class="bg-light section-padding reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Portfolio</span>
+                    <h2 class="section-title">World-Class Designs</h2>
+                    <p class="section-subtitle">See why business owners choose us to handle their digital presence.</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                        <div style="padding: 24px;">
+                            <h4>Artisan Crumbs</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Bakery & Cafe • Delivery in 36h</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background: linear-gradient(135deg, #2af598 0%, #009efd 100%);"></div>
+                        <div style="padding: 24px;">
+                            <h4>Luxe Real Estate</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Property Group • SEO Optimized</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);"></div>
+                        <div style="padding: 24px;">
+                            <h4>Peak Performance</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Fitness Coaching • High Conversion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section-padding reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Simple, Transparent Pricing</h2>
-                    <p class="section-subtitle">No hidden fees or recurring monthly management costs.</p>
+                    <p class="section-subtitle">One-time payment. No recurring management fees.</p>
                 </div>
                 
                 <div class="pricing-grid">
                     <div class="price-card">
-                        <div class="card-content">
-                            <h3 class="plan-name">Basic</h3>
-                            <div class="price">49</div>
-                            <ul class="features">
-                                <li>✓ One-Page Layout</li>
-                                <li>✓ 48-Hour Delivery</li>
-                                <li>✓ 1 Revision Cycle</li>
-                                <li>✓ Mobile Responsive</li>
-                            </ul>
-                        </div>
+                        <h3 class="plan-name">Basic</h3>
+                        <div class="price">49</div>
+                        <ul class="features">
+                            <li>✓ One-Page Layout</li>
+                            <li>✓ 48-Hour Delivery</li>
+                            <li>✓ 1 Revision Cycle</li>
+                            <li>✓ Mobile Responsive</li>
+                        </ul>
                         <a href="order.html" class="btn btn-outline btn-full">Choose Basic</a>
                     </div>
 
                     <div class="price-card popular">
                         <div class="popular-badge">MOST POPULAR</div>
-                        <div class="card-content">
-                            <h3 class="plan-name primary-text">Standard</h3>
-                            <div class="price">99</div>
-                            <ul class="features">
-                                <li>✓ <strong>Contact Form Integration</strong></li>
-                                <li>✓ Basic SEO Setup</li>
-                                <li>✓ 2 Revision Cycles</li>
-                                <li>✓ Social Media Links</li>
-                            </ul>
-                        </div>
+                        <h3 class="plan-name">Standard</h3>
+                        <div class="price">99</div>
+                        <ul class="features">
+                            <li>✓ <strong>Contact Form Integration</strong></li>
+                            <li>✓ Basic SEO Setup</li>
+                            <li>✓ 2 Revision Cycles</li>
+                            <li>✓ Social Media Links</li>
+                        </ul>
                         <a href="order.html" class="btn btn-primary btn-full">Choose Standard</a>
                     </div>
 
                     <div class="price-card">
-                        <div class="card-content">
-                            <h3 class="plan-name">Pro</h3>
-                            <div class="price">149</div>
-                            <ul class="features">
-                                <li>✓ Custom Branding</li>
-                                <li>✓ <strong>24-Hour Delivery</strong></li>
-                                <li>✓ Unlimited Revisions</li>
-                                <li>✓ Priority Support</li>
-                            </ul>
-                        </div>
+                        <h3 class="plan-name">Pro</h3>
+                        <div class="price">149</div>
+                        <ul class="features">
+                            <li>✓ Custom Branding</li>
+                            <li>✓ <strong>24-Hour Delivery</strong></li>
+                            <li>✓ Unlimited Revisions</li>
+                            <li>✓ Priority Support</li>
+                        </ul>
                         <a href="order.html" class="btn btn-outline btn-full">Choose Pro</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonials" class="section-padding">
+        <section id="testimonials" class="bg-light section-padding reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Client Success Stories</h2>
                 </div>
                 <div class="testimonial-grid">
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="testimonial-text">"QuickSite lived up to the name. I had my bakery's landing page ready by Tuesday after ordering Sunday night."</p>
+                        <div style="color: #fbbf24; margin-bottom: 15px;">★★★★★</div>
+                        <p>"QuickSite lived up to the name. I had my bakery's landing page ready by Tuesday after ordering Sunday night."</p>
                         <div class="client-meta">
                             <div class="client-avatar">MA</div>
                             <div>
@@ -160,8 +200,8 @@
                         </div>
                     </div>
                     <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="testimonial-text">"The mobile version looks better than sites I've paid thousands for. Highly recommend the Standard plan."</p>
+                        <div style="color: #fbbf24; margin-bottom: 15px;">★★★★★</div>
+                        <p>"The mobile version looks better than sites I've paid thousands for. Highly recommend the Standard plan."</p>
                         <div class="client-meta">
                             <div class="client-avatar">TC</div>
                             <div>
@@ -173,39 +213,21 @@
                 </div>
             </div>
         </section>
-
-        <section id="faq" class="bg-light section-padding">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Common Questions</h2>
-                </div>
-                <div class="faq-list">
-                    <details>
-                        <summary>Do I need my own domain?</summary>
-                        <div class="faq-answer">
-                            <p>If you have one, great! If not, we can guide you through the process, or host it on a QuickSite sub-domain for free.</p>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>Can I add more pages later?</summary>
-                        <div class="faq-answer">
-                            <p>Yes! Your site is built with clean, modular code. It can be expanded into a full multi-page site as your business grows.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
     </main>
     
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
                 <a href="index.html" class="logo logo-white">Quick<span>Site</span></a>
-                <p class="footer-description">Empowering small businesses with world-class online presence, delivered in record time.</p>
+                <p class="footer-description">Building premium digital presences for the next generation of business owners.</p>
+                <div class="trust-badge">
+                    <span>🛡️ Secure Checkout</span>
+                    <span>⭐ 5-Star Service</span>
+                </div>
             </div>
             <div class="footer-links">
                 <p class="footer-heading">Connect With Us</p>
-                <p class="footer-email">hello@quicksite.com</p>
+                <p style="margin-bottom: 15px;">Questions? <a href="mailto:hello@quicksite.com" style="color: var(--primary-light); text-decoration: none;">hello@quicksite.com</a></p>
                 <div class="social-icons">
                     <a href="#" aria-label="Twitter">Twitter</a>
                     <a href="#" aria-label="LinkedIn">LinkedIn</a>
@@ -213,7 +235,7 @@
             </div>
         </div>
         <div class="container copyright">
-            &copy; 2026 QuickSite. Crafted for entrepreneurs.
+            &copy; 2026 QuickSite. Crafted with precision in Indonesia.
         </div>
     </footer>
 
