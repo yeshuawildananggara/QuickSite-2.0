@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Start Project | QuickSite</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Details | QuickSite</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light">
+<body>
 
-<header class="navbar">
-  <div class="container nav-flex">
-    <a href="index.html" class="logo">Quick<span>Site</span></a>
-  </div>
-</header>
+<section class="order-page">
+  <div class="container">
 
-<section class="section">
-  <div class="container order-layout">
+    <div class="step-indicator">
+      <span id="indicator1" class="active">Info</span>
+      <span id="indicator2">Project</span>
+      <span id="indicator3">Done</span>
+    </div>
 
-    <form id="orderForm" class="card">
-      <h2>Project details</h2>
+    <form id="orderForm" class="order-form">
 
-      <label>Business name</label>
-      <input id="business" required />
+      <div id="step1">
+        <h2>Your Info</h2>
 
-      <label>Plan</label>
-      <select id="plan" required>
-        <option value="basic">Basic – $49</option>
-        <option value="standard">Standard – $99</option>
-        <option value="premium">Premium – $149</option>
-      </select>
+        <div class="form-group">
+          <input id="name" placeholder="Your Name">
+          <small class="error-text"></small>
+        </div>
 
-      <button class="btn primary full">Continue to checkout</button>
+        <div class="form-group">
+          <input id="email" placeholder="Email">
+          <small class="error-text"></small>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next</button>
+      </div>
+
+      <div id="step2" style="display:none">
+        <h2>Business</h2>
+
+        <div class="form-group">
+          <input id="businessName" placeholder="Business Name">
+          <small class="error-text"></small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Continue</button>
+      </div>
+
     </form>
 
-    <aside class="card muted">
-      <h4>What happens next?</h4>
-      <p>You’ll complete payment and we’ll start your 48-hour build immediately.</p>
-    </aside>
+    <div id="successMessage" style="display:none">
+      <h2>Redirecting to checkout…</h2>
+    </div>
 
   </div>
 </section>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const plan = params.get("plan");
-if (plan) document.getElementById("plan").value = plan;
-
-document.getElementById("orderForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const business = document.getElementById("business").value;
-  const selectedPlan = document.getElementById("plan").value;
-  window.location.href = `checkout.html?plan=${selectedPlan}&business=${encodeURIComponent(business)}`;
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
