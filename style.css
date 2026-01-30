@@ -107,81 +107,51 @@ body {
     object-fit: cover;
 }
 
-/* --- 6. Improved Order Experience --- */
+/* --- 6. Professional Order Layout (Fixed Desktop & Mobile) --- */
+
+/* The Container - Use Grid for Desktop, Stack for Mobile */
 .order-container {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    max-width: 1150px;
-    margin: 60px auto;
-}
-
-/* Visual Progress Bar */
-.step-indicator {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 40px;
-}
-.step {
-    flex: 1;
-    height: 6px;
-    background: var(--border);
-    border-radius: 10px;
-    position: relative;
-    transition: 0.5s;
-}
-.step.active { background: var(--primary); }
-.step-label {
-    position: absolute;
-    top: 15px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--text-muted);
-}
-.step.active .step-label { color: var(--primary); }
-
-/* Inline Validation Styles */
-.error-text {
-    color: var(--error);
-    font-size: 0.8rem;
-    margin-top: 5px;
-    display: none;
-}
-input.invalid { border-color: var(--error); background: #fff1f1; }
-
-/* --- 7. Order Page Specific Layout (The Clean Version) --- */
-.order-container {
-    max-width: 800px; /* Limits width so it's readable */
-    margin: 60px auto; /* Centers the form on the page */
+    grid-template-columns: 1fr; /* Stacked by default for mobile */
+    gap: 40px;
+    max-width: 1100px; /* Wider for desktop balance */
+    margin: 40px auto;
     padding: 0 20px;
+    align-items: start;
 }
 
-/* Turns step numbers into a horizontal bar */
+/* Horizontal Progress Bar - Replaces the messy list */
 .step-indicator {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
-    position: relative;
-    gap: 10px;
+    margin-bottom: 40px;
+    gap: 15px;
 }
 
 .step {
     flex: 1;
     text-align: center;
-    padding-bottom: 15px;
-    border-bottom: 4px solid var(--border); /* Gray bar */
+    padding-bottom: 12px;
+    border-bottom: 4px solid var(--border);
     color: var(--text-muted);
     font-weight: 700;
+    font-size: 0.9rem;
     transition: var(--transition);
 }
 
-.step.active {
-    border-bottom-color: var(--primary); /* Turns purple when active */
-    color: var(--primary);
-    opacity: 1;
+.step span {
+    display: block; /* Puts label under the number */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-top: 4px;
 }
 
-/* Better Form Spacing */
+.step.active {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+}
+
+/* The Card (White Box) */
 .order-card {
     background: var(--white);
     padding: 40px;
@@ -190,17 +160,84 @@ input.invalid { border-color: var(--error); background: #fff1f1; }
     border: 1px solid var(--border);
 }
 
-.input-group {
-    margin-bottom: 25px;
-    text-align: left; /* Keeps labels aligned */
+/* Sidebar Styling - Makes use of desktop space */
+.order-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Fixes the tiny textarea in your screenshot */
-textarea {
-    min-height: 120px;
-    resize: vertical;
+.trust-card {
+    background: var(--accent);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
 }
-/* --- 8. Footer & Trust --- */
-.footer { background: #0f172a; color: white; padding: 80px 0 40px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-.trust-badge { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #94a3b8; }
+
+.trust-card h4 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.trust-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* --- 7. Desktop-Specific "Match" --- */
+@media (min-width: 992px) {
+    .order-container {
+        grid-template-columns: 1.6fr 1fr; /* Form is wider, Sidebar is narrower */
+        gap: 60px;
+        margin-top: 60px;
+    }
+
+    .order-sidebar {
+        position: sticky;
+        top: 120px; /* Follows the user while they type */
+    }
+}
+
+/* --- 8. Input & Component Polishing --- */
+.input-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.btn-full { width: 100%; justify-content: center; padding: 16px; }
+
+/* Inline Validation */
+.error-text {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+input.invalid { border-color: var(--error); }
