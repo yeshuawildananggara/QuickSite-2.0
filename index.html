@@ -11,10 +11,11 @@
 
     <header class="navbar">
         <div class="container nav-flex">
-            <a href="index.html" class="logo">Quick<span>Site</span></a>
+            <a href="index.html" class="logo" aria-label="QuickSite Home">Quick<span>Site</span></a>
             <nav>
                 <a href="#how">Process</a>
                 <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Reviews</a>
                 <a href="#faq">FAQ</a>
                 <a href="order.html" class="btn btn-primary" style="padding: 8px 16px; margin-left: 15px;">Get Started</a>
             </nav>
@@ -24,99 +25,102 @@
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <span class="badge" style="background: var(--accent); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; display: inline-block;">
-                    Limited Slots Available This Week
+                <span class="badge" style="background: var(--accent); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; margin-bottom: 20px; display: inline-block; border: 1px solid rgba(102, 126, 234, 0.2);">
+                    🚀 Limited Slots Available This Week
                 </span>
                 <h1>Stop Losing Leads to a <span class="highlight">Missing Website.</span></h1>
-                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px;">
+                <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 35px; max-width: 540px;">
                     We build high-converting, professional one-page websites for growing businesses. Launch your online presence in just 48 hours.
                 </p>
                 <div class="cta-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="order.html" class="btn btn-primary">Start My Project</a>
                     <a href="#pricing" class="btn btn-outline">View Pricing</a>
                 </div>
-                <div class="trust-markers" style="margin-top: 30px; display: flex; gap: 20px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">
+                <div class="trust-markers" style="margin-top: 35px; display: flex; gap: 20px; font-size: 0.9rem; font-weight: 600; color: var(--text-main);">
                     <span>✓ 48-Hour Delivery</span>
                     <span>✓ Mobile Optimized</span>
                 </div>
             </div>
             <div class="hero-image">
-                <div style="background: var(--white); border-radius: 20px; box-shadow: var(--shadow); height: 350px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
-                    <span style="font-size: 4rem;">🚀</span>
+                <div style="background: var(--white); border-radius: 24px; box-shadow: var(--shadow); height: 380px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); position: relative; overflow: hidden;">
+                    <span style="font-size: 5rem; z-index: 2;">✨</span>
+                    <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: var(--accent); border-radius: 50%; opacity: 0.5;"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="how" class="value-prop" style="padding: 80px 0;">
+    <section id="how" style="padding: 100px 0;">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 15px;">The Smartest Way to Get Online</h2>
-                <p style="color: var(--text-muted);">Skip the expensive agencies and the DIY frustration.</p>
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 15px;">The Smartest Way to Get Online</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">Skip the expensive agencies and the DIY frustration.</p>
             </div>
             <div class="order-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="card order-form-card" style="text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🚀</div>
-                    <h3>Built for Speed</h3>
-                    <p>Don't wait months. We deliver your fully-functional site in just two days.</p>
+                <div class="order-form-card" style="text-align: center; border-bottom: 4px solid var(--primary);">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">⚡</div>
+                    <h3 style="margin-bottom: 10px;">Built for Speed</h3>
+                    <p style="color: var(--text-muted);">Don't wait months. We deliver your fully-functional site in just two days.</p>
                 </div>
-                <div class="card order-form-card" style="text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px;">📱</div>
-                    <h3>Mobile-First</h3>
-                    <p>60% of web traffic is mobile. Your site will look stunning on every screen size.</p>
+                <div class="order-form-card" style="text-align: center; border-bottom: 4px solid var(--secondary);">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">📱</div>
+                    <h3 style="margin-bottom: 10px;">Mobile-First</h3>
+                    <p style="color: var(--text-muted);">60% of web traffic is mobile. Your site will look stunning on every screen size.</p>
                 </div>
-                <div class="card order-form-card" style="text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px;">📈</div>
-                    <h3>Conversion Focused</h3>
-                    <p>We build layouts specifically crafted to turn visitors into customers.</p>
+                <div class="order-form-card" style="text-align: center; border-bottom: 4px solid var(--success);">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🎯</div>
+                    <h3 style="margin-bottom: 10px;">Conversion Focused</h3>
+                    <p style="color: var(--text-muted);">We design layouts specifically crafted to turn visitors into paying customers.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="bg-light" style="padding: 80px 0;">
+    <section id="pricing" class="bg-light" style="padding: 100px 0;">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Simple, Transparent Pricing</h2>
-                <p>No hidden fees. No recurring monthly management costs.</p>
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 15px;">Simple, Transparent Pricing</h2>
+                <p style="color: var(--text-muted);">No hidden fees. No recurring monthly management costs.</p>
             </div>
             
-            <div class="order-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <div class="order-form-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <div>
-                        <h3 style="color: var(--text-muted);">Basic</h3>
-                        <div style="font-size: 3rem; font-weight: 800; margin: 15px 0;">$49</div>
-                        <ul style="list-style: none; margin-bottom: 30px; font-size: 0.95rem;">
-                            <li style="margin-bottom: 10px;">✓ One-Page Layout</li>
-                            <li style="margin-bottom: 10px;">✓ 48-Hour Delivery</li>
-                            <li style="margin-bottom: 10px;">✓ 1 Revision</li>
+            <div class="order-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: stretch;">
+                <div class="order-form-card" style="display: flex; flex-direction: column;">
+                    <div style="flex-grow: 1;">
+                        <h3 style="color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Basic</h3>
+                        <div style="font-size: 3.5rem; font-weight: 800; margin: 20px 0;">$49</div>
+                        <ul style="list-style: none; margin-bottom: 30px; color: var(--text-main);">
+                            <li style="margin-bottom: 12px;">✓ One-Page Layout</li>
+                            <li style="margin-bottom: 12px;">✓ 48-Hour Delivery</li>
+                            <li style="margin-bottom: 12px;">✓ 1 Revision Cycle</li>
                         </ul>
                     </div>
                     <a href="order.html" class="btn btn-outline btn-full">Choose Basic</a>
                 </div>
 
-                <div class="order-form-card" style="border: 2px solid var(--primary); transform: scale(1.05); z-index: 10; display: flex; flex-direction: column; justify-content: space-between;">
-                    <div>
-                        <span style="background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Most Popular</span>
-                        <h3 style="margin-top: 10px;">Standard</h3>
-                        <div style="font-size: 3rem; font-weight: 800; margin: 15px 0; color: var(--primary);">$99</div>
-                        <ul style="list-style: none; margin-bottom: 30px; font-size: 0.95rem;">
-                            <li style="margin-bottom: 10px;">✓ <strong>Contact Form</strong></li>
-                            <li style="margin-bottom: 10px;">✓ Basic SEO Setup</li>
-                            <li style="margin-bottom: 10px;">✓ 2 Revisions</li>
+                <div class="order-form-card" style="border: 2px solid var(--primary); position: relative; transform: scale(1.05); z-index: 10; display: flex; flex-direction: column; background: #fff;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; white-space: nowrap;">MOST POPULAR</div>
+                    <div style="flex-grow: 1;">
+                        <h3 style="color: var(--primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;">Standard</h3>
+                        <div style="font-size: 3.5rem; font-weight: 800; margin: 20px 0; color: var(--text-main);">$99</div>
+                        <ul style="list-style: none; margin-bottom: 30px; color: var(--text-main);">
+                            <li style="margin-bottom: 12px;">✓ <strong>Contact Form Integration</strong></li>
+                            <li style="margin-bottom: 12px;">✓ Basic SEO Setup</li>
+                            <li style="margin-bottom: 12px;">✓ 2 Revision Cycles</li>
+                            <li style="margin-bottom: 12px;">✓ Social Media Links</li>
                         </ul>
                     </div>
                     <a href="order.html" class="btn btn-primary btn-full">Choose Standard</a>
                 </div>
 
-                <div class="order-form-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <div>
-                        <h3 style="color: var(--text-muted);">Pro</h3>
-                        <div style="font-size: 3rem; font-weight: 800; margin: 15px 0;">$149</div>
-                        <ul style="list-style: none; margin-bottom: 30px; font-size: 0.95rem;">
-                            <li style="margin-bottom: 10px;">✓ Custom Branding</li>
-                            <li style="margin-bottom: 10px;">✓ <strong>24-Hour Delivery</strong></li>
-                            <li style="margin-bottom: 10px;">✓ 3 Revisions</li>
+                <div class="order-form-card" style="display: flex; flex-direction: column;">
+                    <div style="flex-grow: 1;">
+                        <h3 style="color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Pro</h3>
+                        <div style="font-size: 3.5rem; font-weight: 800; margin: 20px 0;">$149</div>
+                        <ul style="list-style: none; margin-bottom: 30px; color: var(--text-main);">
+                            <li style="margin-bottom: 12px;">✓ Custom Branding</li>
+                            <li style="margin-bottom: 12px;">✓ <strong>24-Hour Express Delivery</strong></li>
+                            <li style="margin-bottom: 12px;">✓ Unlimited Revisions</li>
+                            <li style="margin-bottom: 12px;">✓ Priority Support</li>
                         </ul>
                     </div>
                     <a href="order.html" class="btn btn-outline btn-full">Choose Pro</a>
@@ -125,19 +129,77 @@
         </div>
     </section>
 
+    <section id="testimonials" style="padding: 100px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; letter-spacing: -1px;">Client Success Stories</h2>
+            </div>
+            <div class="order-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="order-form-card">
+                    <div style="color: #FFD700; margin-bottom: 15px; font-size: 1.2rem;">★★★★★</div>
+                    <p style="font-style: italic; color: var(--text-main); margin-bottom: 25px;">"QuickSite live up to the name. I had my bakery's landing page ready by Tuesday after ordering Sunday night. Incredible!"</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 45px; height: 45px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary);">MA</div>
+                        <div>
+                            <h4 style="font-size: 1rem;">Maria Anders</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Bakery Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-form-card">
+                    <div style="color: #FFD700; margin-bottom: 15px; font-size: 1.2rem;">★★★★★</div>
+                    <p style="font-style: italic; color: var(--text-main); margin-bottom: 25px;">"The mobile version looks better than some sites I've paid thousands for. Highly recommend the Standard plan."</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 45px; height: 45px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary);">TC</div>
+                        <div>
+                            <h4 style="font-size: 1rem;">Thomas Clark</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Personal Trainer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="bg-light" style="padding: 100px 0;">
+        <div class="container" style="max-width: 850px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; letter-spacing: -1px;">Common Questions</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Do I need my own domain? <span>+</span>
+                    </summary>
+                    <p style="margin-top: 15px; color: var(--text-muted); line-height: 1.8;">If you have one, great! If not, we can guide you through the 2-minute process of getting one, or host it on a QuickSite sub-domain for free.</p>
+                </details>
+                <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Can I add more pages later? <span>+</span>
+                    </summary>
+                    <p style="margin-top: 15px; color: var(--text-muted); line-height: 1.8;">Yes! The site we build is yours. It's built with clean code that any developer (or us!) can expand into a multi-page site later.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <div class="logo">Quick<span>Site</span></div>
-                <p style="opacity: 0.7; margin-top: 10px;">Premium one-page sites, delivered fast.</p>
+                <a href="index.html" class="logo" style="color: white;">Quick<span>Site</span></a>
+                <p style="opacity: 0.7; margin-top: 15px; max-width: 300px;">Helping small businesses launch professional online presences in record time.</p>
             </div>
             <div class="footer-contact">
-                <p>© 2026 QuickSite. Independent & Proud.</p>
-                <div style="margin-top: 10px;">
-                    <a href="#" style="color: white; margin-right: 15px; text-decoration: none; opacity: 0.8;">Twitter</a>
-                    <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">LinkedIn</a>
+                <p style="font-weight: 700; color: white; margin-bottom: 10px;">Contact Us</p>
+                <p style="opacity: 0.8; margin-bottom: 20px;">hello@quicksite.com</p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="color: white; text-decoration: none; opacity: 0.7;">Twitter</a>
+                    <a href="#" style="color: white; text-decoration: none; opacity: 0.7;">LinkedIn</a>
                 </div>
             </div>
+        </div>
+        <div class="container" style="margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.85rem; opacity: 0.5;">
+            © 2026 QuickSite. All rights reserved. Built with passion for entrepreneurs.
         </div>
     </footer>
 
