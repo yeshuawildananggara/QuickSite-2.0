@@ -1,30 +1,30 @@
-/* --- 1. Variables & Global Settings --- */
+/* --- 1. Variables & Core Design System --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root {
+    /* Refined Indigo Palette */
     --primary: #4f46e5;
     --primary-light: #818cf8;
     --primary-dark: #3730a3;
-    --accent: #eef2ff;
+    --accent: #f5f7ff;
     --text-main: #0f172a;
     --text-muted: #64748b;
     --bg-light: #f8fafc;
     --white: #ffffff;
     --border: #e2e8f0;
     
+    /* Premium Elevation Shadows */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
     --shadow-premium: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    
+    /* Professional Timing Function */
     --transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-}
+/* --- 2. Reset & Typography --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -35,20 +35,23 @@ body {
     overflow-x: hidden;
 }
 
-/* --- 2. Layout Utilities --- */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
+h1, h2, h3 { 
+    letter-spacing: -0.03em; 
+    font-weight: 800;
+    line-height: 1.1;
 }
 
+/* --- 3. Global Layout Utilities --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .section-padding { padding: 100px 0; }
 .bg-light { background-color: var(--bg-light); }
 .section-header { text-align: center; margin-bottom: 60px; }
-.section-title { font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 12px; }
-.section-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+.section-title { font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 12px; }
+.section-subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-/* --- 3. Navigation --- */
+/* --- 4. Interactive Components --- */
+
+/* Navigation with Glassmorphism */
 .navbar {
     padding: 16px 0;
     position: sticky;
@@ -61,15 +64,7 @@ body {
 }
 
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    text-decoration: none;
-    color: var(--text-main);
-}
-
+.logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
 .logo span { color: var(--primary); }
 
 .nav-links a {
@@ -78,81 +73,62 @@ body {
     font-weight: 600;
     margin-left: 24px;
     font-size: 0.9rem;
-    transition: 0.3s ease;
+    transition: color 0.3s ease;
 }
-
 .nav-links a:hover { color: var(--primary); }
 
-/* --- 4. Hero & Premium Window --- */
+/* The Hero Section */
 .hero {
     padding: 100px 0;
     background: radial-gradient(circle at 90% 10%, #f5f7ff 0%, #ffffff 60%);
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.1;
+.badge {
+    background: var(--accent);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.8rem;
     margin-bottom: 24px;
-    letter-spacing: -2px;
+    display: inline-block;
+    border: 1px solid rgba(79, 70, 229, 0.1);
 }
 
-.highlight { color: var(--primary); }
-
 .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-muted);
     margin-bottom: 40px;
     max-width: 540px;
 }
 
-.badge {
-    background: var(--accent);
-    color: var(--primary);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-    display: inline-block;
-}
+.highlight { color: var(--primary); position: relative; }
 
-/* The Premium Visual Anchor */
+/* --- 5. Premium Visuals & Mockups --- */
 .premium-window {
     background: var(--white);
-    border-radius: 16px;
+    border-radius: 20px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-premium);
     overflow: hidden;
-    width: 100%;
+    transition: transform 0.8s var(--transition);
 }
 
-.window-bar {
-    background: #f1f5f9;
-    padding: 12px;
-    display: flex;
-    gap: 6px;
-    border-bottom: 1px solid var(--border);
-}
-
+.window-bar { background: #f1f5f9; padding: 14px; display: flex; gap: 8px; border-bottom: 1px solid var(--border); }
 .dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; }
-.window-body { padding: 30px; background: #fff; }
-.ui-skeleton-hero { height: 160px; background: #f8fafc; border-radius: 8px; margin-bottom: 20px; }
-.ui-skeleton-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.ui-skeleton-box { height: 80px; background: #f8fafc; border-radius: 8px; }
+.window-body { padding: 30px; }
+.ui-skeleton-hero { height: 140px; background: var(--bg-light); border-radius: 12px; margin-bottom: 20px; }
+.ui-skeleton-box { height: 80px; background: var(--bg-light); border-radius: 12px; }
 
-/* --- 5. Features & Cards --- */
-.feature-grid, .pricing-grid, .testimonial-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-}
+/* --- 6. Card Grids --- */
+.feature-grid, .pricing-grid, .testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
 
 .feature-card, .price-card, .testimonial-card {
     background: var(--white);
-    padding: 40px 32px;
+    padding: 40px;
     border-radius: 24px;
-    border: 2px solid transparent;
-    box-shadow: var(--shadow-premium);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
     position: relative;
     display: flex;
@@ -162,116 +138,94 @@ body {
 .feature-card:hover, .price-card:hover, .testimonial-card:hover {
     transform: translateY(-10px);
     border-color: var(--primary-light);
-    box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.12);
+    box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
 }
 
-.feature-icon { font-size: 2.5rem; margin-bottom: 20px; }
-
-/* --- 6. Pricing & Testimonials --- */
-.price { font-size: 3.5rem; font-weight: 800; margin: 20px 0; color: var(--text-main); }
-.price::before { content: '$'; font-size: 1.5rem; vertical-align: super; margin-right: 4px; }
-.plan-name { text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-size: 0.9rem; }
-
-.price-card.popular { border-color: var(--primary); transform: scale(1.05); z-index: 2; }
+/* Pricing Specifics */
+.price-card.popular { border: 2px solid var(--primary); scale: 1.02; }
 .popular-badge {
     position: absolute;
     top: -16px; left: 50%; transform: translateX(-50%);
     background: var(--primary); color: white;
     padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 800;
 }
-
-.features { list-style: none; margin-bottom: 30px; flex-grow: 1; }
-.features li { margin-bottom: 12px; color: var(--text-muted); }
+.price { font-size: 3.5rem; font-weight: 800; margin: 15px 0; }
+.price::before { content: '$'; font-size: 1.5rem; vertical-align: super; }
 
 /* Testimonials */
-.stars { color: #f59e0b; margin-bottom: 15px; }
-.testimonial-text { font-style: italic; color: var(--text-main); margin-bottom: 25px; font-size: 1.1rem; }
-.client-meta { display: flex; align-items: center; gap: 15px; border-top: 1px solid var(--border); padding-top: 20px; }
-.client-avatar { width: 48px; height: 48px; background: var(--accent); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
+.client-meta { display: flex; align-items: center; gap: 15px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
+.client-avatar { width: 44px; height: 44px; background: var(--accent); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
 
-/* FAQ */
-.faq-list { max-width: 800px; margin: 0 auto; }
-details { background: white; border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; transition: var(--transition); }
-details[open] { border-color: var(--primary); box-shadow: var(--shadow-premium); }
-summary { padding: 24px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-.faq-answer { padding: 0 24px 24px; color: var(--text-muted); }
-
-/* --- 7. Buttons --- */
-.btn {
-    padding: 16px 28px;
+/* --- 7. Modern Inputs (Anti-Scam Styling) --- */
+input, select, textarea {
+    width: 100%;
+    padding: 14px 18px;
     border-radius: 12px;
+    border: 2px solid var(--border);
+    background: var(--bg-light);
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* --- 8. Buttons --- */
+.btn {
+    padding: 16px 32px;
+    border-radius: 14px;
     text-decoration: none;
     font-weight: 700;
-    transition: 0.3s ease;
+    transition: var(--transition);
     display: inline-block;
-    cursor: pointer;
     border: none;
+    cursor: pointer;
 }
 
-.btn-primary { background: var(--primary); color: white; }
-.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
-.btn-outline { border: 2px solid var(--border); color: var(--text-main); }
+.btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3); }
+.btn-primary:hover { background: var(--primary-dark); transform: scale(1.02); }
+.btn-outline { border: 2px solid var(--border); color: var(--text-main); background: transparent; }
 .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-.btn-full { width: 100%; text-align: center; }
 
-/* --- 8. Footer --- */
-.footer { padding: 80px 0 40px; background: #0f172a; color: white; }
-.footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 60px; }
-.logo-white { color: white !important; }
-.footer-description { margin-top: 20px; color: #94a3b8; max-width: 300px; }
-.copyright { text-align: center; color: #64748b; border-top: 1px solid #1e293b; padding-top: 30px; }
+/* --- 9. Responsive Design & Desktop Fixes --- */
 
-/* --- 9. Responsive --- */
-@media (min-width: 992px) {
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .feature-grid, .pricing-grid, .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
-    .testimonial-grid { grid-template-columns: 1fr 1fr; max-width: 900px; margin: 0 auto; }
-    .footer-grid { grid-template-columns: 2fr 1fr; }
+/* Tablet & Desktop */
+@media (min-width: 768px) {
+    .feature-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero { text-align: center; padding: 60px 0; }
-    .hero-subtitle { margin: 0 auto 40px; }
-    .price-card.popular { transform: scale(1); }
-}
-
-/* --- Desktop Optimization (The Fix) --- */
 @media (min-width: 992px) {
-    /* 1. Split the Hero into two columns */
+    /* Side-by-side Hero */
     .hero-grid { 
         display: grid; 
-        grid-template-columns: 1.2fr 0.8fr; /* Text gets more space than the image */
+        grid-template-columns: 1.1fr 0.9fr; 
         gap: 80px; 
         align-items: center; 
         text-align: left; 
     }
 
-    /* 2. Spread the Features and Pricing across the screen */
-    .feature-grid, 
-    .pricing-grid { 
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 side-by-side */
-        gap: 32px; 
-    }
-
-    /* 3. Keep Testimonials centered but in 2 columns */
-    .testimonial-grid { 
-        display: grid;
-        grid-template-columns: 1fr 1fr; 
-        gap: 32px;
-    }
-
-    /* 4. Ensure Hero image doesn't get too giant */
-    .premium-window {
-        max-width: 550px;
-        margin-left: auto;
-    }
+    /* 3-Column Grids */
+    .feature-grid, .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+    .testimonial-grid { grid-template-columns: 1fr 1fr; max-width: 900px; margin: 0 auto; }
+    
+    /* Footer Grid */
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
 }
 
-/* --- Tablet Optimization --- */
-@media (min-width: 768px) and (max-width: 991px) {
-    .feature-grid, .pricing-grid {
-        grid-template-columns: 1fr 1fr; /* 2 side-by-side on tablets */
-    }
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero { text-align: center; padding: 60px 0; }
+    .hero-subtitle { margin: 0 auto 40px; }
+    .nav-links { display: none; } /* Consider a mobile menu later */
+    .price-card.popular { scale: 1; margin: 20px 0; }
 }
+
+/* --- 10. Footer --- */
+.footer { background: #0f172a; color: white; padding: 80px 0 40px; }
+.logo-white { color: white; }
+.footer-description { color: #94a3b8; margin-top: 20px; max-width: 320px; }
+.copyright { text-align: center; color: #475569; margin-top: 60px; padding-top: 30px; border-top: 1px solid #1e293b; font-size: 0.85rem; }
