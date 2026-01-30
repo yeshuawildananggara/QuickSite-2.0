@@ -72,26 +72,83 @@ nav a {
 /* ---------- HERO ---------- */
 
 .hero {
+  padding: 120px 0;
   background:
-    radial-gradient(circle at top right, #e0e7ff, transparent 60%),
-    radial-gradient(circle at bottom left, #f0f9ff, transparent 60%);
+    radial-gradient(circle at top right, #eef2ff, transparent 60%),
+    #ffffff;
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 3.6rem);
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 80px;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.8rem, 5vw, 3.8rem);
   line-height: 1.1;
   margin-bottom: 20px;
 }
 
-.hero h1 span {
+.hero-copy h1 span {
   color: var(--primary);
 }
 
-.subheadline {
+.hero-desc {
+  max-width: 520px;
   font-size: 1.1rem;
   color: var(--text-muted);
-  max-width: 520px;
   margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.hero-trust {
+  display: flex;
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Pill */
+.pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #eef2ff;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+/* Mockup */
+.mockup {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 40px 80px rgba(15,23,42,0.12);
+  overflow: hidden;
+}
+
+.mockup-header {
+  height: 40px;
+  background: #e5e7eb;
+}
+
+.mockup-body {
+  height: 280px;
+  background: linear-gradient(
+    180deg,
+    #f8fafc,
+    #eef2ff
+  );
 }
 
 /* ---------- BUTTONS ---------- */
