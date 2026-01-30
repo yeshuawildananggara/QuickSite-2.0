@@ -1,343 +1,50 @@
-/* =========================
-   QuickSite — Unified Design System
-   Matches: index.html, order.html, checkout.html
-   ========================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | QuickSite</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-light">
 
-:root {
-  --primary: #4f46e5;
-  --primary-dark: #4338ca;
-  --bg-light: #f8fafc;
-  --bg-white: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border: #e5e7eb;
-  --radius: 14px;
-  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --shadow-card: 0 6px 18px rgba(15, 23, 42, 0.06);
-}
+<header class="navbar">
+  <div class="container nav-flex">
+    <a href="index.html" class="logo">Quick<span>Site</span></a>
+    <span class="secure">🔒 Secure checkout</span>
+  </div>
+</header>
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<section class="section">
+  <div class="container order-layout">
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-light);
-  color: var(--text-main);
-  line-height: 1.6;
-}
+    <div class="card">
+      <h2>Payment</h2>
+      <input placeholder="Card number" />
+      <button class="btn primary full">Pay & launch</button>
+    </div>
 
-.bg-light { background: var(--bg-light); }
+    <aside class="card">
+      <h4>Order summary</h4>
+      <p id="summaryPlan"></p>
+      <p id="summaryBusiness"></p>
+      <strong id="summaryTotal"></strong>
+    </aside>
 
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+  </div>
+</section>
 
-/* =========================
-   Navbar
-   ========================= */
+<script>
+const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+const business = params.get("business");
 
-.navbar {
-  background: var(--bg-white);
-  border-bottom: 1px solid var(--border);
-}
+const prices = { basic: 49, standard: 99, premium: 149 };
 
-.nav-flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-}
+document.getElementById("summaryPlan").textContent = `Plan: ${plan}`;
+document.getElementById("summaryBusiness").textContent = `Business: ${business}`;
+document.getElementById("summaryTotal").textContent = `Total: $${prices[plan]}`;
+</script>
 
-.logo {
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--text-main);
-  text-decoration: none;
-}
-
-.logo span { color: var(--primary); }
-
-.nav-links a {
-  margin-left: 28px;
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.nav-links a:hover { color: var(--primary); }
-
-.checkout-badge {
-  font-weight: 600;
-  color: var(--primary);
-}
-
-/* =========================
-   Sections & Headings
-   ========================= */
-
-.section-padding {
-  padding: 80px 0;
-}
-
-.section-title {
-  font-size: clamp(2rem, 4vw, 2.6rem);
-  font-weight: 800;
-  margin-bottom: 12px;
-}
-
-.section-subtitle,
-.subheadline {
-  color: var(--text-muted);
-  max-width: 640px;
-}
-
-.badge {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(79, 70, 229, 0.1);
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 0.75rem;
-  margin-bottom: 12px;
-}
-
-/* =========================
-   Buttons
-   ========================= */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 22px;
-  border-radius: var(--radius);
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--border);
-  color: var(--text-main);
-}
-
-.btn-outline:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.btn-full { width: 100%; }
-
-/* =========================
-   Forms (Order + Checkout)
-   ========================= */
-
-.order-container,
-.order-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 48px;
-}
-
-@media (max-width: 900px) {
-  .order-container,
-  .order-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.order-card,
-.order-form-card {
-  background: var(--bg-white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  padding: 40px;
-}
-
-.form-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 6px;
-}
-
-.input-group,
-.form-group {
-  margin-bottom: 22px;
-}
-
-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  font-family: inherit;
-  font-size: 0.95rem;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-textarea { resize: vertical; min-height: 120px; }
-
-.error-text,
-.error-message {
-  font-size: 0.75rem;
-  color: #dc2626;
-  margin-top: 6px;
-  display: block;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-@media (max-width: 600px) {
-  .form-row { grid-template-columns: 1fr; }
-}
-
-/* =========================
-   Step Indicator (Order)
-   ========================= */
-
-.step-indicator {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 36px;
-}
-
-.step {
-  flex: 1;
-  padding: 10px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-align: center;
-  background: #eef2ff;
-  color: var(--primary);
-}
-
-.step span { margin-left: 6px; font-weight: 600; }
-
-.step.active {
-  background: var(--primary);
-  color: #fff;
-}
-
-/* =========================
-   Sidebar / Trust / Summary
-   ========================= */
-
-.order-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.sticky-sidebar {
-  position: sticky;
-  top: 100px;
-}
-
-.trust-card,
-.summary-card,
-.testimonial-card {
-  background: var(--bg-white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-  padding: 24px;
-}
-
-.summary-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.summary-item.total {
-  margin-top: 16px;
-}
-
-.summary-label { color: var(--text-muted); }
-
-.summary-value { font-weight: 700; }
-
-.trust-badge {
-  font-size: 0.85rem;
-  padding: 12px 16px;
-  border-radius: 999px;
-  background: #ecfeff;
-  color: #0369a1;
-  text-align: center;
-}
-
-/* =========================
-   Success States
-   ========================= */
-
-.success-message {
-  background: var(--bg-white);
-  padding: 60px 40px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  text-align: center;
-}
-
-.success-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-/* =========================
-   Footer
-   ========================= */
-
-.footer {
-  border-top: 1px solid var(--border);
-  background: var(--bg-white);
-  padding: 40px 0;
-  margin-top: 80px;
-}
-
-.footer-grid {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer p { color: var(--text-muted); font-size: 0.85rem; }
-
-@media (max-width: 700px) {
-  .footer-grid { flex-direction: column; gap: 12px; text-align: center; }
-}
+</body>
+</html>
