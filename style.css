@@ -235,3 +235,43 @@ summary { padding: 24px; font-weight: 700; cursor: pointer; list-style: none; di
     .hero-subtitle { margin: 0 auto 40px; }
     .price-card.popular { transform: scale(1); }
 }
+
+/* --- Desktop Optimization (The Fix) --- */
+@media (min-width: 992px) {
+    /* 1. Split the Hero into two columns */
+    .hero-grid { 
+        display: grid; 
+        grid-template-columns: 1.2fr 0.8fr; /* Text gets more space than the image */
+        gap: 80px; 
+        align-items: center; 
+        text-align: left; 
+    }
+
+    /* 2. Spread the Features and Pricing across the screen */
+    .feature-grid, 
+    .pricing-grid { 
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 side-by-side */
+        gap: 32px; 
+    }
+
+    /* 3. Keep Testimonials centered but in 2 columns */
+    .testimonial-grid { 
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 32px;
+    }
+
+    /* 4. Ensure Hero image doesn't get too giant */
+    .premium-window {
+        max-width: 550px;
+        margin-left: auto;
+    }
+}
+
+/* --- Tablet Optimization --- */
+@media (min-width: 768px) and (max-width: 991px) {
+    .feature-grid, .pricing-grid {
+        grid-template-columns: 1fr 1fr; /* 2 side-by-side on tablets */
+    }
+}
