@@ -1,50 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout | QuickSite</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light">
+<body>
 
-<header class="navbar">
-  <div class="container nav-flex">
-    <a href="index.html" class="logo">Quick<span>Site</span></a>
-    <span class="secure">🔒 Secure checkout</span>
-  </div>
-</header>
+<section class="checkout-page">
+  <div class="container checkout-grid">
 
-<section class="section">
-  <div class="container order-layout">
-
-    <div class="card">
+    <form class="checkout-form">
       <h2>Payment</h2>
-      <input placeholder="Card number" />
-      <button class="btn primary full">Pay & launch</button>
-    </div>
+      <input placeholder="Card Number">
+      <input placeholder="MM/YY">
+      <input placeholder="CVC">
+      <button class="btn btn-primary">Pay & Launch</button>
+    </form>
 
-    <aside class="card">
-      <h4>Order summary</h4>
-      <p id="summaryPlan"></p>
-      <p id="summaryBusiness"></p>
-      <strong id="summaryTotal"></strong>
+    <aside class="summary-card">
+      <h3>Order Summary</h3>
+      <p>Website Plan</p>
+      <strong>$99</strong>
     </aside>
 
   </div>
 </section>
-
-<script>
-const params = new URLSearchParams(window.location.search);
-const plan = params.get("plan");
-const business = params.get("business");
-
-const prices = { basic: 49, standard: 99, premium: 149 };
-
-document.getElementById("summaryPlan").textContent = `Plan: ${plan}`;
-document.getElementById("summaryBusiness").textContent = `Business: ${business}`;
-document.getElementById("summaryTotal").textContent = `Total: $${prices[plan]}`;
-</script>
 
 </body>
 </html>
