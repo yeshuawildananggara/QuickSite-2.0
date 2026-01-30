@@ -11,12 +11,13 @@
     --bg-light: #f8fafc;
     --white: #ffffff;
     --border: #e2e8f0;
+    --error: #ef4444; /* Added for inline validation */
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-premium: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-    --transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- 2. Reset & Typography --- */
+/* --- 2. Reset & Core --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -27,156 +28,154 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 { letter-spacing: -0.02em; font-weight: 800; line-height: 1.2; }
-
-/* --- 3. Global Layout Utilities --- */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section-padding { padding: 100px 0; }
-.bg-light { background-color: var(--bg-light); }
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-title { font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 12px; }
-.section-subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-
-/* --- 4. Navigation --- */
+/* --- 3. Navigation (Fixed Mobile Menu) --- */
 .navbar {
     padding: 16px 0;
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
-    z-index: 1000;
+    z-index: 2000;
     border-bottom: 1px solid var(--border);
 }
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: var(--text-main); }
 .logo span { color: var(--primary); }
-.nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; margin-left: 24px; font-size: 0.9rem; transition: 0.3s; }
+
+/* Desktop Links */
+.nav-links { display: flex; align-items: center; }
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    margin-left: 32px; 
+    font-size: 0.95rem; 
+    transition: var(--transition); 
+}
 .nav-links a:hover { color: var(--primary); }
 
-/* --- 5. Hero & Index Components --- */
-.hero { padding: 100px 0; background: radial-gradient(circle at 90% 10%, #f5f7ff 0%, #ffffff 60%); }
-.badge { background: var(--accent); color: var(--primary); padding: 8px 16px; border-radius: 100px; font-weight: 700; font-size: 0.8rem; margin-bottom: 24px; display: inline-block; border: 1px solid rgba(79, 70, 229, 0.1); }
-.hero-subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 540px; }
-.highlight { color: var(--primary); }
-
-/* --- 6. Card Grids & Components --- */
-.feature-grid, .pricing-grid, .testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-
-.feature-card, .price-card, .testimonial-card, .order-card {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
+/* Mobile Menu Toggle (Hamburger) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
 }
-
-.feature-card:hover, .price-card:hover, .testimonial-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-light);
-    box-shadow: var(--shadow-premium);
-}
-
-/* Pricing Specifics */
-.price-card.popular { border: 2px solid var(--primary); position: relative; }
-.popular-badge { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; }
-.price { font-size: 3.5rem; font-weight: 800; margin: 15px 0; }
-.price::before { content: '$'; font-size: 1.5rem; vertical-align: super; }
-
-/* --- 7. Order Page Specific Layout --- */
-.order-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    max-width: 1100px;
-    margin: 0 auto;
-    align-items: start;
-}
-
-.step-indicator {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--bg-light);
-}
-
-.step {
-    color: var(--text-muted);
-    font-weight: 700;
-    text-align: center;
-    flex: 1;
-    font-size: 0.9rem;
-    opacity: 0.5;
-}
-
-.step.active {
-    color: var(--primary);
-    opacity: 1;
-}
-
-.step span { display: block; font-size: 0.7rem; text-transform: uppercase; }
-
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
-
-input, select, textarea {
-    width: 100%;
-    padding: 14px 18px;
-    border-radius: 12px;
-    border: 2px solid var(--border);
-    background: var(--bg-light);
-    font-family: inherit;
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: var(--text-main);
+    border-radius: 4px;
     transition: 0.3s;
 }
 
-input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: var(--primary);
-    background: white;
-    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+/* --- 4. Hero & Animations --- */
+.hero { padding: 120px 0; background: radial-gradient(circle at 90% 10%, #f5f7ff 0%, #ffffff 70%); }
+
+/* Fade-in Animation Class */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.trust-card {
-    background: var(--accent);
-    padding: 24px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(79, 70, 229, 0.1);
+/* --- 5. Portfolio/Gallery (New Section) --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
 }
-
-.trust-card h4 { margin-bottom: 8px; color: var(--primary-dark); }
-.trust-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; }
-
-/* --- 8. Buttons --- */
-.btn {
-    padding: 16px 32px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: 700;
+.portfolio-item {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
     transition: var(--transition);
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    border: none;
 }
-.btn-full { width: 100%; }
-.btn-primary { background: var(--primary); color: white; }
-.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
-.btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-main); }
-.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+.portfolio-item:hover { transform: scale(1.03); box-shadow: var(--shadow-premium); }
+.portfolio-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: var(--bg-light);
+    object-fit: cover;
+}
 
-/* --- 9. Responsive Design --- */
-@media (min-width: 768px) {
-    .feature-grid { grid-template-columns: repeat(3, 1fr); }
-    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+/* --- 6. Improved Order Experience --- */
+.order-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: 1150px;
+    margin: 60px auto;
+}
+
+/* Visual Progress Bar */
+.step-indicator {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+.step {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 10px;
+    position: relative;
+    transition: 0.5s;
+}
+.step.active { background: var(--primary); }
+.step-label {
+    position: absolute;
+    top: 15px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.step.active .step-label { color: var(--primary); }
+
+/* Inline Validation Styles */
+.error-text {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+input.invalid { border-color: var(--error); background: #fff1f1; }
+
+/* --- 7. Responsive Design (The Fixes) --- */
+
+@media (max-width: 991px) {
+    /* Fixed Mobile Navigation */
+    .menu-toggle { display: flex; }
+    .nav-links {
+        display: none; /* JS will toggle this to flex */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 40px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    }
+    .nav-links.show { display: flex; }
+    .nav-links a { margin: 15px 0; font-size: 1.1rem; }
 }
 
 @media (min-width: 992px) {
-    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
-    .order-container { grid-template-columns: 1.8fr 1fr; }
+    .order-container { grid-template-columns: 1.6fr 1fr; }
+    .feature-grid, .pricing-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* --- 10. Footer --- */
-.footer { background: #0f172a; color: white; padding: 60px 0; margin-top: 100px; }
-.copyright { text-align: center; font-size: 0.85rem; color: #64748b; }
+/* --- 8. Footer & Trust --- */
+.footer { background: #0f172a; color: white; padding: 80px 0 40px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+.trust-badge { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #94a3b8; }
