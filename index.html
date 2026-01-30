@@ -2,93 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QuickSite — Launch Your Website in 48 Hours</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickSite — Websites in 48 Hours</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="navbar">
   <div class="container nav-flex">
     <div class="logo">Quick<span>Site</span></div>
-    <nav>
-      <a href="#how">How it works</a>
+    <nav id="nav-menu">
       <a href="#pricing">Pricing</a>
-      <a href="order.html" class="btn primary small">Get started</a>
+      <a href="order.html" class="btn btn-outline">Start</a>
     </nav>
+    <div id="mobile-menu">☰</div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <h1>Launch a professional website<br>in <span>48 hours</span></h1>
-      <p>Clean design, mobile-ready, conversion-focused. Built fast for real businesses.</p>
-      <div class="hero-actions">
-        <a href="#pricing" class="btn primary">View pricing</a>
-        <a href="#how" class="btn outline">How it works</a>
-      </div>
-    </div>
-    <div class="hero-mockup">Website Preview</div>
+  <div class="container">
+    <h1>Launch a Professional Website<br><span>in 48 Hours</span></h1>
+    <p class="subheadline">
+      No templates. No builders. We design & launch your site fast.
+    </p>
+    <a href="#pricing" class="btn btn-primary">View Pricing</a>
   </div>
 </section>
 
-<section id="how" class="section">
+<section id="pricing" class="pricing">
   <div class="container">
-    <h2>How it works</h2>
-    <div class="steps">
-      <div class="card">Tell us your needs</div>
-      <div class="card">We design & build</div>
-      <div class="card">Launch in 48h</div>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" class="section alt">
-  <div class="container">
-    <h2>Simple pricing</h2>
+    <h2 class="section-title">Pricing</h2>
 
     <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Basic</h3>
+      <div class="price-card">
+        <h3>Starter</h3>
         <p class="price">$49</p>
-        <ul>
-          <li>One-page site</li>
-          <li>Mobile responsive</li>
-          <li>72h delivery</li>
-        </ul>
-        <a href="order.html?plan=basic" class="btn outline full">Choose Basic</a>
+        <a href="order.html?plan=starter" class="btn btn-outline">Choose</a>
       </div>
 
-      <div class="pricing-card featured">
-        <span class="badge">Most popular</span>
+      <div class="price-card featured">
         <h3>Standard</h3>
         <p class="price">$99</p>
-        <ul>
-          <li>Custom layout</li>
-          <li>Clear CTA</li>
-          <li>48h delivery</li>
-        </ul>
-        <a href="order.html?plan=standard" class="btn primary full">Choose Standard</a>
+        <a href="order.html?plan=standard" class="btn btn-primary">Most Popular</a>
       </div>
 
-      <div class="pricing-card">
+      <div class="price-card">
         <h3>Premium</h3>
-        <p class="price">$149</p>
-        <ul>
-          <li>Advanced sections</li>
-          <li>Priority delivery</li>
-          <li>Visual polish</li>
-        </ul>
-        <a href="order.html?plan=premium" class="btn outline full">Choose Premium</a>
+        <p class="price">$199</p>
+        <a href="order.html?plan=premium" class="btn btn-outline">Choose</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  © 2026 QuickSite
+  <p>© 2026 QuickSite</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
