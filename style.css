@@ -176,19 +176,27 @@ nav a {
 }
 
 /* PRICING */
+/* PRICING GRID */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
 .pricing-card {
-  max-width: 360px;
-  margin: auto;
+  position: relative;
   padding: 32px;
   border-radius: 16px;
   border: 1px solid #eee;
+  background: #fff;
   text-align: center;
 }
 
-.price {
-  font-size: 36px;
-  font-weight: 700;
-  margin: 16px 0;
+.pricing-card .desc {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 16px;
 }
 
 .pricing-card ul {
@@ -200,8 +208,34 @@ nav a {
   margin-bottom: 10px;
 }
 
-.full {
-  width: 100%;
+/* FEATURED PLAN */
+.featured {
+  border: 2px solid #2563eb;
+  transform: translateY(-12px);
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2563eb;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* RESPONSIVE PRICING */
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured {
+    transform: none;
+  }
 }
 
 /* FOOTER */
