@@ -1,46 +1,80 @@
-:root {
-  --primary: #4f6cff;
-  --primary-dark: #3b52cc;
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --border: #e5e7eb;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --radius: 16px;
-  --shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 20px 40px rgba(15, 23, 42, 0.08);
+/* 1. RESET / BASE */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  color: #0f172a;
+  background: #ffffff;
   line-height: 1.6;
 }
 
-/* ---------- LAYOUT ---------- */
+/* 2. VARIABLES */
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --bg-light: #f8fafc;
+  --radius: 14px;
+}
 
+/* 3. GLOBAL UTILITIES */
 .container {
-  width: 92%;
-  max-width: 1120px;
-  margin: auto;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-section {
-  padding: 100px 0;
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  text-align: center;
 }
 
-/* ---------- NAVBAR ---------- */
+.section-sub {
+  text-align: center;
+  margin-top: 12px;
+  color: var(--text-muted);
+}
 
+/* 4. BUTTONS */
+.btn {
+  display: inline-block;
+  border-radius: 999px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 14px 26px;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 12px 24px;
+}
+
+/* 5. NAVBAR */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
   background: rgba(255,255,255,0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid #e5e7eb;
@@ -53,275 +87,54 @@ section {
   justify-content: space-between;
 }
 
-.logo {
-  font-size: 1.25rem;
-  font-weight: 800;
-}
-
-.logo span {
-  color: var(--primary);
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-}
-
-.nav-links a {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.nav-links a:hover {
-  color: var(--text-main);
-}
-
-.nav-cta {
-  padding: 10px 18px;
-  font-size: 0.9rem;
-}
-
-/* ---------- HERO ---------- */
-
+/* 6. HERO */
 .hero {
   padding: 120px 0;
-  background:
-    radial-gradient(circle at top right, #eef2ff, transparent 60%),
-    #ffffff;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-  gap: 80px;
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  max-width: 720px;
 }
 
-.hero-copy h1 {
-  font-size: clamp(2.8rem, 5vw, 3.8rem);
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.hero-copy h1 span {
-  color: var(--primary);
-}
-
-.hero-desc {
-  max-width: 520px;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  margin-bottom: 40px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 30px;
-}
-
-.hero-trust {
-  display: flex;
-  gap: 24px;
-  padding: 0;
-  list-style: none;
-  font-size: 0.9rem;
+.hero p {
+  margin-top: 20px;
+  max-width: 640px;
   color: var(--text-muted);
 }
 
-/* Pill */
-.pill {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  background: #eef2ff;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
-
-/* Mockup */
-.mockup {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 40px 80px rgba(15,23,42,0.12);
-  overflow: hidden;
-}
-
-.mockup-header {
-  height: 40px;
-  background: #e5e7eb;
-}
-
-.mockup-body {
-  height: 280px;
-  background: linear-gradient(
-    180deg,
-    #f8fafc,
-    #eef2ff
-  );
-}
-
-/* ---------- BUTTONS ---------- */
-
-.btn {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all .25s ease;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: white;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-outline {
-  border: 2px solid var(--primary);
-  color: var(--primary);
-}
-
-.btn-outline:hover {
-  background: var(--primary);
-  color: white;
-}
-
-/* ---------- PRICING ---------- */
-
+/* 7. PRICING */
 .pricing {
   padding: 120px 0;
-  background: #f8fafc;
+  background: var(--bg-light);
 }
 
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  margin-top: 60px;
 }
 
-.price-card {
-  background: white;
-  border-radius: 20px;
-  padding: 40px 32px;
-  box-shadow: 0 20px 40px rgba(15,23,42,0.08);
+/* 8. ORDER */
+.order {
+  padding: 120px 0;
 }
 
-.price-card h3 {
-  margin-bottom: 12px;
+.order-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
 }
 
-.price {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 24px;
+/* 9. CHECKOUT */
+.checkout {
+  padding: 120px 0;
 }
 
-.price-card ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 32px;
-}
-
-.price-card li {
-  margin-bottom: 12px;
-}
-
-.featured {
-  border: 2px solid var(--primary);
-  transform: scale(1.05);
-}
-
-.badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 6px 12px;
-  background: var(--primary);
-  color: white;
-  border-radius: 999px;
-  margin-bottom: 16px;
-}
-
-.muted {
-  opacity: 0.6;
-}
-
-/* ---------- FORMS ---------- */
-
-.order-page,
-.checkout-page {
-  min-height: 100vh;
-}
-
-.order-form,
-.checkout-form {
-  background: var(--card);
-  padding: 48px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-  max-width: 520px;
-  margin: auto;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  margin-bottom: 6px;
-  font-size: 1rem;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-input.invalid {
-  border-color: #ef4444;
-}
-
-.error-text {
-  font-size: 0.8rem;
-  color: #ef4444;
-  display: none;
-}
-
-/* ---------- STEP INDICATOR ---------- */
-
-.step-indicator {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 40px;
-  font-weight: 600;
-}
-
-.step-indicator span {
-  color: var(--text-muted);
-}
-
-.step-indicator .active {
-  color: var(--primary);
-}
-
-/* ---------- FOOTER ---------- */
-
-.footer {
-  padding: 40px 0;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+/* 10. FOOTER */
+footer {
+  padding: 80px 0;
+  background: #020617;
+  color: #cbd5f5;
 }
