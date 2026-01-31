@@ -8,49 +8,32 @@
 </head>
 <body>
 
-<section class="order-page">
-  <div class="container">
+<section class="order">
+  <div class="container order-grid">
 
-    <div class="step-indicator">
-      <span id="indicator1" class="active">Info</span>
-      <span id="indicator2">Project</span>
-      <span id="indicator3">Done</span>
+    <div class="order-info">
+      <h2>Let’s build your website</h2>
+      <p>
+        Fill this form once. We’ll handle the rest.
+        Delivery in 48 hours.
+      </p>
+
+      <ul class="order-trust">
+        <li>✔ Clear process</li>
+        <li>✔ No revisions drama</li>
+        <li>✔ Real human support</li>
+      </ul>
     </div>
 
-    <form id="orderForm" class="order-form">
+    <form class="order-form">
+      <input type="text" placeholder="Your name" />
+      <input type="email" placeholder="Email address" />
+      <textarea placeholder="What is your business about?"></textarea>
 
-      <div id="step1">
-        <h2>Your Info</h2>
-
-        <div class="form-group">
-          <input id="name" placeholder="Your Name">
-          <small class="error-text"></small>
-        </div>
-
-        <div class="form-group">
-          <input id="email" placeholder="Email">
-          <small class="error-text"></small>
-        </div>
-
-        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next</button>
-      </div>
-
-      <div id="step2" style="display:none">
-        <h2>Business</h2>
-
-        <div class="form-group">
-          <input id="businessName" placeholder="Business Name">
-          <small class="error-text"></small>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Continue</button>
-      </div>
-
+      <button class="btn btn-primary">
+        Submit & Start Project
+      </button>
     </form>
-
-    <div id="successMessage" style="display:none">
-      <h2>Redirecting to checkout…</h2>
-    </div>
 
   </div>
 </section>
