@@ -94,6 +94,36 @@ body {
 }
 
 /* =========================
+   CARD SYSTEM (GLOBAL)
+========================= */
+
+.card,
+.price-card,
+.order-form,
+.checkout-form,
+.summary-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+/* Card hover interaction */
+.price-card,
+.order-form,
+.checkout-form,
+.summary-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.price-card:hover,
+.order-form:hover,
+.checkout-form:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.16);
+}
+
+/* =========================
    5. NAVBAR
 ========================= */
 .navbar {
