@@ -33,5 +33,28 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(()=>location.href='checkout.html',1000);
     });
   }
+// =========================
+// ORDER FORM → CHECKOUT
+// =========================
+
+const orderForm = document.getElementById('orderForm');
+
+if (orderForm) {
+  orderForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // simple validation
+    const inputs = orderForm.querySelectorAll('input, textarea');
+    for (let input of inputs) {
+      if (!input.value.trim()) {
+        input.focus();
+        return;
+      }
+    }
+
+    // go to checkout
+    window.location.href = "checkout.html";
+  });
+}
 
 });
