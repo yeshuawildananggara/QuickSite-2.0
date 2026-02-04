@@ -56,6 +56,3 @@ if (orderForm) {
     window.location.href = "checkout.html";
   });
 }
-
-});
-}
